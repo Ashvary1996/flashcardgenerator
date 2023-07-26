@@ -15,7 +15,7 @@ for Cloning Project:-
 when you want to added new files in project do this.
 
     git add .
-    git commit -m"first commit"
+    git commit -m "first commit"
     git push -u origin master                (pushing code in your branch "beAware about in which branch you are pushing codes")
 
     git branch branchName                    (only for creating new branch)
