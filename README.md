@@ -1,14 +1,28 @@
-### `npm test`
+PROJECT NAME : "flashcardgenerator"
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Team Members:-
 
-### `npm run build`
+1. Prachi Rajput
+2. MD Shahnawaz
+3. Ashvary Gidian
+4. Subrat Laga
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+for Cloning Project:-
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    git clone https://github.com/Ashvary1996/flashcardgenerator.git
+    cd flashcardgenerator
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+when you want to added new files in project do this.
+
+    git add .
+    git commit -m"first commit"
+    git push -u origin master                (pushing code in your branch "beAware about in which branch you are pushing codes")
+
+    git branch branchName                    (only for creating new branch)
+    git checkout branchName                  (go to your branch)
+
+git remote add origin https://github.com/Ashvary1996/flashcardgenerator.git (only for owner )
+
+git pull (do this everytime to getting updated things from repositary otherwise you wont be ablle to push anyhting)
+
+https://ashvary1996.github.io/flashcardgenerator/
