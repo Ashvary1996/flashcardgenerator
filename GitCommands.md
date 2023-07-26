@@ -21,3 +21,4 @@ git pull                                     (do this everytime to getting updat
 
 
 
+https://ashvary1996.github.io/flashcardgenerator/
