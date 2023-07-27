@@ -10,11 +10,13 @@ const initialValues = {
   addDescription: "",
   enterTerm: "",
   enterDefination: "",
+  uploadImg: "",
+  termImg: "",
 };
 
 const onSubmit = (values) => {
   console.log("Formik values", values);
-  // console.log("Formik values", values.createGroup);
+  console.log("Formik values", values.createGroup);
 };
 
 const validationSchema = Yup.object({
@@ -67,10 +69,15 @@ function CreateFlashcard() {
                     <FaFileUpload color="blue" size="20px" />
                   </div>
                   <div>
-                    <input type="file" id="upload-btn" hidden />
+                    <input
+                      name="uploadImg"
+                      type="file"
+                      id="upload-btn"
+                      hidden
+                    />
                     <label
                       className="text-center m-auto p-5 text-blue-600   cursor-pointer"
-                      for="upload-btn"
+                      htmlFor="upload-btn"
                     >
                       Upload Image
                     </label>
@@ -96,66 +103,65 @@ function CreateFlashcard() {
             <br />
 
             <div className=" createTerm Div commonDiv  " id="termDiv">
-              <p>
-                <div className="flex justify-around">
-                  <div className="bg-orange-400 h-8 w-8 rounded-full text-white text-center p-1">
-                    1
-                  </div>
-                  <div className="form-control w-1/3">
-                    <label htmlFor="enterTerm">Enter Term*</label>
-                    <Field
-                      className="w-[100%] h-8"
-                      type="text"
-                      name="enterTerm"
-                      id="enterTerm"
-                    ></Field>
-                    <ErrorMessage name="enterTerm">
-                      {(emsg) => <div className="error  ">{emsg}</div>}
-                    </ErrorMessage>
-                  </div>
-                  <div className="form-control w-1/3  mx-5">
-                    <label htmlFor="enterDefination">Enter Defination*</label>
-                    <Field
-                      className="w-[100%] h-16"
-                      as="textarea"
-                      name="enterDefination"
-                      id="enterDefination"
-                    ></Field>
-                    <ErrorMessage name="enterDefination">
-                      {(emsg) => <div className="error  ">{emsg}</div>}
-                    </ErrorMessage>
-                  </div>
+              <div className="flex justify-around">
+                <div className="bg-orange-400 h-8 w-8 rounded-full text-white text-center p-1">
+                  1
+                </div>
+                <div className="form-control w-1/3">
+                  <label htmlFor="enterTerm">Enter Term*</label>
+                  <Field
+                    className="w-[100%] h-8"
+                    type="text"
+                    name="enterTerm"
+                    id="enterTerm"
+                  ></Field>
+                  <ErrorMessage name="enterTerm">
+                    {(emsg) => <div className="error  ">{emsg}</div>}
+                  </ErrorMessage>
+                </div>
+                <div className="form-control w-1/3  mx-5">
+                  <label htmlFor="enterDefination">Enter Defination*</label>
+                  <Field
+                    className="w-[100%] h-16"
+                    as="textarea"
+                    name="enterDefination"
+                    id="enterDefination"
+                  ></Field>
+                  <ErrorMessage name="enterDefination">
+                    {(emsg) => <div className="error  ">{emsg}</div>}
+                  </ErrorMessage>
+                </div>
 
-                  <div className="form-control">
+                <div className="form-control">
+                  <div>
+                    <input type="file" id="actual-btn" hidden />
+                    <label
+                      className="text-center m-auto p-5 text-blue-600  font-medium	cursor-pointer"
+                      htmlFor="actual-btn"
+                    >
+                      Select Image
+                    </label>
+                  </div>
+                  <div className="flex w-44 ">
                     <div>
-                      <input type="file" id="actual-btn" hidden />
-                      <label
-                        className="text-center m-auto p-5 text-blue-600  font-medium	cursor-pointer"
-                        for="actual-btn"
-                      >
-                        Select Image
-                      </label>
+                      <img
+                        className="w-33 h-20 p-1"
+                        src="https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?cs=srgb&dl=pexels-pixabay-268533.jpg&fm=jpg"
+                        alt=""
+                      />
                     </div>
-                    <div className="flex w-44 ">
-                      <div>
-                        <img
-                          className="w-33 h-20 p-1"
-                          src="https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?cs=srgb&dl=pexels-pixabay-268533.jpg&fm=jpg"
-                          alt=""
-                        />
+                    <div className="mx-2 m-auto ">
+                      <div className="cursor-pointer my-2 text-gray-500">
+                        <RiDeleteBinLine size="1.5rem" />
                       </div>
-                      <div className="mx-2 m-auto ">
-                        <div className="cursor-pointer my-2 text-gray-500">
-                          <RiDeleteBinLine size="1.5rem" />
-                        </div>
-                        <div className="cursor-pointer text-blue-700">
-                          <TbEdit size="1.5rem" />
-                        </div>
+                      <div className="cursor-pointer text-blue-700">
+                        <TbEdit size="1.5rem" />
                       </div>
                     </div>
                   </div>
                 </div>
-              </p>
+              </div>
+
               {/* <div> Add more button will come here</div> */}
             </div>
 

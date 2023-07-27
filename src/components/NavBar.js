@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function MainFlashcard() {
+function NavBar() {
   return (
     <>
       <div>
@@ -24,4 +24,4 @@ function MainFlashcard() {
     </>
   );
 }
-export default MainFlashcard;
+export default NavBar;
