@@ -3,7 +3,7 @@ import React from "react";
 function FlashCardDetails() {
   return (
     <div>
-      <h1> FlashCardDetails</h1>
+      <h1> FlashCard - Details</h1>
     </div>
   );
 }

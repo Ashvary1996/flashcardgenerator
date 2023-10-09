@@ -35,5 +35,34 @@
   padding: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-left: 25px;
 }
 
+/*       temprory css     // */
+
+.error {
+  color: red;
+}
+
+input,
+textarea {
+  border: 1px solid grey;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+label {
+  color: rgb(110, 105, 105);
+  font: bold;
+  text-align: left;
+  align-items: flex-start;
+}
+
+.termsDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
