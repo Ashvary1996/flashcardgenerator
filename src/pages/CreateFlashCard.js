@@ -24,6 +24,7 @@ function CreateFlashCard() {
       .min(10, "Description should be min 10 characters")
       .max(400, "Description allowed only upto 400 characters")
       .required("Required!"),
+
     term: Yup.array(
       Yup.object({
         termName: Yup.string()
@@ -38,6 +39,18 @@ function CreateFlashCard() {
     ),
   });
 
+  const inputRef = useRef(null);
+  const [image, setImage] = useState("");
+
+  const handleImageClick = () => {
+    inputRef.current.click();
+  };
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    console.log(file);
+    setImage(event.target.files[0]);
+  };
   return (
     <div>
       <Formik
@@ -51,6 +64,7 @@ function CreateFlashCard() {
         {({ values, handleChange, handleBlur }) => (
           <>
             <Form>
+              <div>
               <div className="createFlashcardDiv">
                 <label htmlFor="groupName"> Create Group*</label>
                 <Field
@@ -64,6 +78,28 @@ function CreateFlashCard() {
                   {(emsg) => <div className="error ">{emsg}</div>}
                 </ErrorMessage>
 
+                <div className="w-20 h-20"onClick={handleImageClick}  >
+                {image ? (
+                  <img src={URL.createObjectURL(image)} alt=""  className=".img-display-after"/>
+                ) : (
+                  <img src="" alt="" className=".img-display-before" 
+                  />
+                )}
+                <label htmlFor='image'
+                className="flex w-32 p-2 mx-auto mt-5 text-blue-700 transition-all ease-in-out border border-blue-600 rounded-lg shadow-md hover:-translate-y-px hover:bg-blue-700 hover:text-white"
+                >Select Image</label>
+                <input
+                  type="file"
+                  ref={inputRef}
+                  onChange={handleImageChange}
+                  className="hidden w-12 h-12"
+                  sizes={"1.25vw"}
+                  hidden
+                  
+                />
+
+              </div>
+                </div>
                 <label htmlFor="groupDescription"> Add description</label>
                 <Field
                   as="textarea"
@@ -85,7 +121,7 @@ function CreateFlashCard() {
                     <div>
                       {values.term.map((term, index) => (
                         <div className="termsDiv" key={index}>
-                          <div className="bg-red-600 p-4 text-white text-xl rounded-full ">
+                          <div className="p-4 text-xl text-white bg-red-600 rounded-full ">
                             {index + 1}
                           </div>
                           <div className="flex flex-col">
