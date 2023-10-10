@@ -1,33 +1,23 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Form, Field, Formik, FieldArray, ErrorMessage } from "formik";
 import validationSchema from "../components/ValidatioSchema";
+import { useDispatch, useSelector } from "react-redux"; // Import useDispatch and useSelector
+import { updateFormData } from "../redux/flashcardSlice"; // Import your Redux Toolkit action
 import { MdOutlineUploadFile } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { BiEdit } from "react-icons/bi";
 import { GiCrossMark } from "react-icons/gi";
 
 function CreateFlashCard() {
-  const formData = {
-    groupName: "",
-    groupImage: "",
-    groupDescription: "",
-    term: [
-      {
-        termName: "",
-        termDefinition: "",
-        termImage: "",
-      },
-    ],
-  };
   const SUPPORTED_FORMATS = ["image/jpeg", "image/jpg", "image/png"];
 
-  const inputRef = useRef([]);
-  inputRef.current = [];
+  const dispatch = useDispatch(); // Initialize useDispatch
+  const formData = useSelector((state) => state.flashcard.formData); // Access form data from Redux store
 
   return (
     <div>
       <Formik
-        initialValues={formData}
+        initialValues={formData} // Use formData from Redux store
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
           resetForm({ values: "" });
@@ -41,6 +31,7 @@ function CreateFlashCard() {
               <div className="createFlashcardDiv">
                 <div className="flex flex-row " name="groupUpperdiv">
                   <div className="flex flex-col">
+                    {/* Group Name */}
                     <label htmlFor="groupName"> Create Group*</label>
                     <Field
                       name="groupName"
@@ -53,8 +44,9 @@ function CreateFlashCard() {
                       {(emsg) => <div className="error ">{emsg}</div>}
                     </ErrorMessage>
                   </div>
-                  {/* ........Group Image Div..................................................................................... */}
+                  {/* Group Image Div */}
                   <div>
+                    {/* Group Image */}
                     {values.groupImage ? (
                       <div className="flex ">
                         <img
@@ -81,10 +73,10 @@ function CreateFlashCard() {
                     <ErrorMessage name="groupImage">
                       {(emsg) => <div className="error ">{emsg}</div>}
                     </ErrorMessage>
-                    {/*  image upload */}
+                    {/* Image upload */}
                     <input
                       onChange={(event) => {
-                        //  it's validation on image
+                        // Validation on image
                         if (
                           event.target.files[0] &&
                           !SUPPORTED_FORMATS.includes(
@@ -115,11 +107,10 @@ function CreateFlashCard() {
                       type="file"
                     />
                   </div>
-
-                  {/* ...........Div Ended............................................................................... */}
+                  {/* Group Image Div Ended */}
                 </div>
-
                 <div className="flex flex-col" name="groupDescriptionDiv">
+                  {/* Group Description */}
                   <label htmlFor="groupDescription"> Add description</label>
                   <Field
                     as="textarea"
@@ -134,7 +125,7 @@ function CreateFlashCard() {
                 </div>
               </div>
 
-              {/* Term Div ///////////////////////////*/}
+              {/* Term Div */}
               <div className="myFlashcardDiv">
                 <FieldArray
                   name="term"
@@ -146,6 +137,7 @@ function CreateFlashCard() {
                             {index + 1}
                           </div>
                           <div className="flex flex-col">
+                            {/* Term Name */}
                             <label htmlFor={`term.${index}.termName`}>
                               Enter Term*
                             </label>
@@ -163,7 +155,7 @@ function CreateFlashCard() {
                               {(emsg) => <div className="error ">{emsg}</div>}
                             </ErrorMessage>
                           </div>
-
+                          {/* Term Definition */}
                           <div className="flex flex-col">
                             <label htmlFor={`term.${index}.termDefinition`}>
                               Enter Definition*
@@ -183,9 +175,9 @@ function CreateFlashCard() {
                               {(emsg) => <div className="error ">{emsg}</div>}
                             </ErrorMessage>
                           </div>
-                          {/* ////////// Term  IMagE Div Started//////////////// */}
+                          {/* Term Image Div Started */}
                           <div className="flex">
-                            {/* term image upload  */}
+                            {/* Term Image */}
                             {term.termImage ? (
                               <div className="flex  ">
                                 <img
@@ -210,16 +202,15 @@ function CreateFlashCard() {
                                 </span>
                               </label>
                             )}
-
                             <ErrorMessage
                               className="text-red-600"
                               component="span"
                               name={`term.${index}.termImage`}
                             />
-                            {/* it's input field for image upload */}
+                            {/* Input field for image upload */}
                             <input
                               onChange={(event) => {
-                                //  it's validation on image
+                                // Validation on image
                                 if (
                                   event.target.files[0] &&
                                   !SUPPORTED_FORMATS.includes(
@@ -253,8 +244,7 @@ function CreateFlashCard() {
                               type="file"
                             />
                             <div>
-                              {/*  delete a term  if > one
-                               */}
+                              {/* Delete a term if more than one */}
                               {values.term.length <= 1 ? (
                                 ""
                               ) : (
@@ -275,7 +265,7 @@ function CreateFlashCard() {
                               )}
                             </div>
                           </div>
-                          {/* //////////  IMagE Div Ended//////////////// */}
+                          {/* Term Image Div Ended */}
                         </div>
                       ))}
 
