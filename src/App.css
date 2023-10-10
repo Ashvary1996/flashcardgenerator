@@ -1,14 +1,18 @@
 .App {
   text-align: center;
+  
   /* background-color: rgba(44, 223, 223, 0.511); */
 }
+ /* .App ::-webkit-scrollbar {
+  display: hide;
+} */
 
 .navbarDiv {
   margin: auto;
-  margin-top: 2rem;
+  margin-top: 1rem;
   /* background-color: red; */
   width: 80%;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   padding: 10px;
 }
 
@@ -32,7 +36,7 @@
   margin: auto;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  padding: 10px;
+  padding: 25px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 4px;
   display: flex;
@@ -51,18 +55,34 @@ input,
 textarea {
   border: 1px solid grey;
   border-radius: 4px;
-  padding: 4px;
+  padding: 5px;
 }
 
 label {
-  color: rgb(110, 105, 105);
-  font: bold;
+  color: rgb(129, 125, 125);
+  font-weight: bold;
   text-align: left;
   align-items: flex-start;
+  margin-bottom: 5px;
 }
 
 .termsDiv {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  column-gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.groupImgDelIcon{
+margin-top: 10px;
+margin-left: -20px;
+text-align: left;
+color: rgb(156, 153, 150);
+}
+.groupImgDelIcon:hover{
+color: red;
+font-size: xx-large;
+cursor: pointer;
+
 }
