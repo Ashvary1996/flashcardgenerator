@@ -2,7 +2,7 @@ import React from "react";
 
 function MyFlashCard() {
   const dataS = JSON.parse(localStorage.getItem("cardSave"));
-  console.log(dataS);
+  console.log("fetchStorageData",dataS);
 
   return (
     <div className="myFlashcardDiv">

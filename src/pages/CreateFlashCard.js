@@ -13,6 +13,8 @@ function CreateFlashCard() {
 
   const dispatch = useDispatch(); // Initialize useDispatch
   const formData = useSelector((state) => state.flashcard.formData); // Access form data from Redux store
+  const dataArr = JSON.parse(localStorage.getItem("cardSave"))|| [];
+  console.log("DataArray ", dataArr);
 
   return (
     <div>
@@ -22,7 +24,8 @@ function CreateFlashCard() {
         onSubmit={(values, { resetForm }) => {
           resetForm({ values: "" });
           console.log("FormValues", values);
-          localStorage.setItem("cardSave", JSON.stringify(values));
+          dataArr.push(values);
+          localStorage.setItem("cardSave", JSON.stringify(dataArr));
         }}
       >
         {({ values, handleChange, handleBlur, setFieldValue }) => (
