@@ -14,6 +14,8 @@ const initialState = {
       },
     ],
   },
+  flashcards: [],
+  // formGroupData:[] // Add  term property in array to store created flashcards
 };
 
 const flashcardSlice = createSlice({
@@ -21,10 +23,14 @@ const flashcardSlice = createSlice({
   initialState,
   reducers: {
     updateFormData: (state, action) => {
-      state.formData = action.payload;
+      state.formData=action.payload
+    },
+    addFlashCard: (state, action) => {
+      // Add the new flashcard to the flashcards array
+      state.flashcards.push(action.payload);
     },
   },
 });
 
-export const { updateFormData } = flashcardSlice.actions;
+export const { updateFormData, addFlashCard } = flashcardSlice.actions;
 export default flashcardSlice.reducer;
