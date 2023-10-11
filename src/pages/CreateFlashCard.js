@@ -14,24 +14,11 @@ function CreateFlashCard() {
 
   const SUPPORTED_FORMATS = ["image/jpeg", "image/jpg", "image/png"];
 
-  
   // Initialize useHistory for navigation
-  const formData = useSelector((state) => state.flashcard.formData);
-  
+  const formData = useSelector((state) => state.flashcard.formData);// Access form data from Redux store
   const flashcardData = useSelector((state) => state.flashcard.flashcards);
- 
-
-  
-  
-
-  // Save the form data to local storage when the form is submitted
- 
   const dispatch = useDispatch();
-
   
-  // console.log("data from redux store",flashcardData)
-  //  console.log("data from redux store",formData)
- 
 
   return (
     <div>
@@ -39,12 +26,7 @@ function CreateFlashCard() {
         initialValues={formData} // Use formData from Redux store
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
-          resetForm({ values: "" });
-          // console.log("FormValues", values);
-          
-          
-        
-          // Dispatch the action to update the Redux store with the saved data
+          //resetForm({ values: "" });
           dispatch(updateFormData(values));
           // console.log("Data dispatched to Redux store");
          
@@ -61,12 +43,6 @@ function CreateFlashCard() {
   
        const updatedFlashcards = [...flashcardData,values];
        localStorage.setItem("flashcards", JSON.stringify(updatedFlashcards));
-  
-        
-        
-        
-
-          
           
         }}
         
@@ -102,7 +78,7 @@ function CreateFlashCard() {
                         />
                         <GiCrossMark
                           className="groupImgDelIcon"
-                          onClick={() => setFieldValue("groupImage", "")}
+                          onClick={() => setFieldValue("groupImage", null)}
                         />
                       </div>
                     ) : (
@@ -172,7 +148,7 @@ function CreateFlashCard() {
               </div>
 
               {/* Term Div */}
-              <div className="myFlashcardDiv">
+              <div className="createFlashcardDiv">
                 <FieldArray
                   name="term"
                   render={(moreTerm) => (

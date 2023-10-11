@@ -10,6 +10,7 @@ import NoPageFound from "./components/NoPageFound";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import flashcardReducer from "./redux/flashcardSlice"; // Import your slice
+import FlashCardDetails from "./pages/FlashCardDetails";
 
 const store = configureStore({
   reducer: {
@@ -32,6 +33,9 @@ function App() {
               </Route>
               <Route path="/myflashcard" element={<MyFlashCard />}>
                 MyFlashcard
+              </Route>
+              <Route path="/flashCardDetails" element={<FlashCardDetails />}>
+                FlashCardDetails Page
               </Route>
               <Route path="/" element={<CreateFlashCard />}>
                 Default Page

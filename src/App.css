@@ -1,9 +1,10 @@
 .App {
   text-align: center;
-  
+
   /* background-color: rgba(44, 223, 223, 0.511); */
 }
- /* .App ::-webkit-scrollbar {
+
+/* .App ::-webkit-scrollbar {
   display: hide;
 } */
 
@@ -29,8 +30,7 @@
   padding-bottom: 8px;
 }
 
-.createFlashcardDiv,
-.myFlashcardDiv {
+.createFlashcardDiv {
   background-color: white;
   width: 78%;
   margin: auto;
@@ -74,15 +74,49 @@ label {
   margin-bottom: 20px;
 }
 
-.groupImgDelIcon{
-margin-top: 10px;
-margin-left: -20px;
-text-align: left;
-color: rgb(156, 153, 150);
+.groupImgDelIcon {
+  margin-top: 10px;
+  margin-left: -20px;
+  text-align: left;
+  color: rgb(156, 153, 150);
 }
-.groupImgDelIcon:hover{
-color: red;
-font-size: xx-large;
-cursor: pointer;
+
+.groupImgDelIcon:hover {
+  color: red;
+  font-size: xx-large;
+  cursor: pointer;
+
+}
+
+/* 2nd Page */
+.myFlashcardDiv {
+  width: 78%;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.parentCardDiv {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+
+
+}
+
+.childCards {
+  background-color: white;
+  display: flex;
+  width: 300px;
+  height: 250px;
+  flex-direction: column;
+  margin: auto;
+  gap: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 40px;
+
 
 }
