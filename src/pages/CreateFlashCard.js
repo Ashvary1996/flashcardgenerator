@@ -33,15 +33,16 @@ function CreateFlashCard() {
           dispatch(addFlashCard(values));
           //  console.log("Flashcard data dispatched to Redux store");
 
-          //Store the flashcards array in local storage
-          // Assuming you have access to the store's state
+        //Store the flashcards array in local storage
+        // Assuming you have access to the store's state
+        
+         // Update local storage with the flashcards array
+         
 
-          // Update local storage with the flashcards array
-
-          // const dataArr = JSON.parse(localStorage.getItem("flashcards"))|| [];
+  
+       const updatedFlashcards = [...flashcardData,values];
+       localStorage.setItem("flashcards", JSON.stringify(updatedFlashcards));
           
-          const updatedFlashcards = [...flashcardData, values];
-          localStorage.setItem("flashcards", JSON.stringify(updatedFlashcards));
         }}
       >
         {({ values, handleChange, handleBlur, setFieldValue }) => (
@@ -94,7 +95,8 @@ function CreateFlashCard() {
                     </ErrorMessage>
                     {/* Image upload */}
                     <input
-                      onChange={(event) => {
+                      onChange={(event) => 
+                        {
                         // Validation on image
                         if (
                           event.target.files[0] &&
@@ -119,7 +121,8 @@ function CreateFlashCard() {
                             setFieldValue("groupImage", reader.result);
                           };
                         }
-                      }}
+                      }
+                    }
                       className="hidden"
                       name="groupImage"
                       id="groupImage"

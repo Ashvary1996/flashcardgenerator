@@ -1,12 +1,25 @@
 import React, { useState } from "react";
-import abcd from "../assets/abcd.png";
+import { useNavigate } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
+
+
 import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
+
 
 function MyFlashCard() {
   const dataS = JSON.parse(localStorage.getItem("flashcards"));
-  console.log("fetchStorageData", dataS);
+  //console.log("fetchStorageData", dataS);
+  const navigate = useNavigate();
+  // const history = useHistory();
+
   const [showCard, setShowCard] = useState(6);
+
+  const handleViewCardsClick = (elem) => {
+    
+    navigate('/flashCardDetails',{state:elem})
+    //history.push({ pathname: "/flashCardDetails", state: elem });
+  };
+  
   return (
     <div className="myFlashcardDiv">
       <div className="parentCardDiv ">
@@ -19,21 +32,16 @@ function MyFlashCard() {
                   src={elem.groupImage ? elem.groupImage : logo}
                 />
                 <h1 className="font-medium  pt-6">{elem.groupName}</h1>
-                <h2 className="text-gray-500">{elem.groupDescription}</h2>
+                <h2 className="text-gray-500">{elem.groupDescription.slice(0,60)}</h2>
                 <h2 className="text-gray-500 font-medium">
-                  {elem.term.length + " Cards"}
+                  {elem.term.length} Cards
                 </h2>
-                <Link to="/flashCardDetails">
-                  <button
-                    className="border-2 border-red-500 font-medium  m-auto text-red-600 w-40 cursor-pointer  rounded "
-                    onClick={() => {
-                      // window.location = "/flashCardDetails";
-                      console.log("clicked");
-                    }}
-                  >
-                    View Cards
-                  </button>
-                </Link>
+                <button
+                  className="border-2 border-red-500 font-medium  m-auto text-red-600 w-40 cursor-pointer  rounded "
+                  onClick={() => handleViewCardsClick(elem)}
+                >
+                  View Cards
+                </button>
               </div>
             ))
           : "No FlashCard Here Please Create New"}
