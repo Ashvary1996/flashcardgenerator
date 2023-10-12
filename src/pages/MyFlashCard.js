@@ -32,7 +32,7 @@ function MyFlashCard() {
                   src={elem.groupImage ? elem.groupImage : logo}
                 />
                 <h1 className="font-medium  pt-6">{elem.groupName}</h1>
-                <h2 className="text-gray-500">{elem.groupDescription}</h2>
+                <h2 className="text-gray-500">{elem.groupDescription.slice(0,60)}</h2>
                 <h2 className="text-gray-500 font-medium">
                   {elem.term.length} Cards
                 </h2>
