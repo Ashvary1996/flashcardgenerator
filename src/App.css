@@ -120,3 +120,16 @@ label {
 
 
 }
+
+/* /////////////CardDetails Page /////////////// */
+.shareBtns {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  padding: 5px;
+  margin-bottom: 20px;
+  color: gray;
+  font-weight: 500;
+  cursor: pointer;
+  padding-right: 70px;
+}

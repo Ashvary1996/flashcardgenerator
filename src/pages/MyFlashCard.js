@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import abcd from "../assets/abcd.png";
 import logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
+
 function MyFlashCard() {
   const dataS = JSON.parse(localStorage.getItem("flashcards"));
   console.log("fetchStorageData", dataS);
@@ -11,7 +13,8 @@ function MyFlashCard() {
         {dataS
           ? dataS.slice(0, showCard).map((elem, index) => (
               <div key={index} className="childCards relative ">
-                <img alt=""
+                <img
+                  alt=""
                   className="border-2 bg-slate-400  w-20 h-20 m-auto rounded-full absolute -top-12 left-28 mb-10"
                   src={elem.groupImage ? elem.groupImage : logo}
                 />
@@ -20,15 +23,17 @@ function MyFlashCard() {
                 <h2 className="text-gray-500 font-medium">
                   {elem.term.length + " Cards"}
                 </h2>
-                <button
-                  className="border-2 border-red-500 font-medium  m-auto text-red-600 w-40 cursor-pointer  rounded "
-                  onClick={() => {
-                    window.location = "/flashCardDetails";
-                    console.log("clicked");
-                  }}
-                >
-                  View Cards
-                </button>
+                <Link to="/flashCardDetails">
+                  <button
+                    className="border-2 border-red-500 font-medium  m-auto text-red-600 w-40 cursor-pointer  rounded "
+                    onClick={() => {
+                      // window.location = "/flashCardDetails";
+                      console.log("clicked");
+                    }}
+                  >
+                    View Cards
+                  </button>
+                </Link>
               </div>
             ))
           : "No FlashCard Here Please Create New"}
