@@ -47,9 +47,9 @@ function CreateFlashCard() {
         {({ values, handleChange, handleBlur, setFieldValue }) => (
           <>
             <Form>
-              <div className="createFlashcardDiv">
-                <div className="flex flex-row " name="groupUpperdiv">
-                  <div className="flex flex-col">
+              <div className="createFlashcardDiv p-5 space-y-4 rounded-lg ">
+                <div className="flex flex-col md:flex-row" name="groupUpperdiv">
+                  <div className="flex flex-col ">
                     {/* Group Name */}
                     <label htmlFor="groupName"> Create Group*</label>
                     <Field
@@ -57,7 +57,7 @@ function CreateFlashCard() {
                       id="groupName"
                       type="text"
                       placeholder="Group Name"
-                      className="w-80"
+                      className="w-full md:w-96"
                     ></Field>
                     <ErrorMessage name="groupName">
                       {(emsg) => <div className="error ">{emsg}</div>}
@@ -69,7 +69,7 @@ function CreateFlashCard() {
                     {values.groupImage ? (
                       <div className="flex ">
                         <img
-                          className="mx-5 w-24 h-24 mt- rounded-full"
+                          className="mx-2 w-36 h-40 mt- rounded-full text-center "
                           src={values.groupImage}
                           alt=""
                         />
@@ -81,10 +81,10 @@ function CreateFlashCard() {
                     ) : (
                       <label
                         htmlFor="groupImage"
-                        className=" border w-34 h-[18px]  cursor-pointer px-3  mx-3 my-3 mt-[31px] p-4   border-gray-400 flex  items-center justify-center rounded  "
+                        className=" border w-44 h-[12px]  cursor-pointer px-3  mx-3 my-3 mt-[31px] p-4   border-gray-400 flex  items-center justify-center rounded  "
                       >
                         <MdOutlineUploadFile className=" text-[2em] text-blue-700" />
-                        <span className="text-blue-700 font-bold">
+                        <span className="text-blue-700 font-bold text-center">
                           Upload Image
                         </span>
                       </label>
@@ -136,7 +136,7 @@ function CreateFlashCard() {
                     name="groupDescription"
                     id="groupDescription"
                     placeholder="description "
-                    className="w-[70%] h-40"
+                    className="w-full md:w-[70%] h-48 resize-none"
                   ></Field>
                   <ErrorMessage name="groupDescription">
                     {(emsg) => <div className="error ">{emsg}</div>}
@@ -145,23 +145,23 @@ function CreateFlashCard() {
               </div>
 
               {/* Term Div */}
-              <div className="createFlashcardDiv">
+              <div className="createFlashcardDiv lg:self-auto">
                 <FieldArray
                   name="term"
                   render={(moreTerm) => (
                     <div>
                       {values.term.map((term, index) => (
-                        <div className="termsDiv" key={index}>
-                          <div className="w-8 h-8 text-xl text-white text-center bg-red-600 rounded-full ">
+                        <div className="termsDiv w-full md:flex flex-row space-x-5" key={index}>
+                          <div className="w-10 h-12 text-xl text-white text-center bg-red-600 rounded-full ">
                             {index + 1}
                           </div>
-                          <div className="flex flex-col">
+                          <div className="flex flex-col ">
                             {/* Term Name */}
                             <label htmlFor={`term.${index}.termName`}>
                               Enter Term*
                             </label>
                             <Field
-                              className="w-80 p-2"
+                              className=" p-2 md:w-64" 
                               name={`term.${index}.termName`}
                               id={`term.${index}.termName`}
                               value={term.termName}
@@ -181,7 +181,7 @@ function CreateFlashCard() {
                             </label>
                             <Field
                               as="textarea"
-                              className="w-80 p-2 h-10"
+                              className="  p-2 h-20 md:w-64 resize-none"
                               name={`term.${index}.termDefinition`}
                               id={`term.${index}.termDefinition`}
                               value={term.termDefinition}
@@ -198,14 +198,14 @@ function CreateFlashCard() {
                           <div className="flex">
                             {/* Term Image */}
                             {term.termImage ? (
-                              <div className="flex  ">
+                              <div className="flex ">
                                 <img
-                                  className="h-16 mt-2  max-w-[12rem] rounded"
+                                  className="h-16 mt-2 max-w-[12rem] rounded"
                                   src={term.termImage}
                                   alt=""
                                 />
                                 <GiCrossMark
-                                  className="text-lg hover:text-red-600 mt-1 mx-1"
+                                  className="text-lg hover:text-red-600 mt-1 mx-1 lg:w-40"
                                   onClick={() =>
                                     setFieldValue(`term.${index}.termImage`, "")
                                   }
@@ -216,7 +216,7 @@ function CreateFlashCard() {
                                 htmlFor={`term.${index}.termImage`}
                                 className="w-44 h-[38px] cursor-pointer px-3 mx-3 mt-8 py-1 border border-gray-400 flex  items-center justify-center  rounded"
                               >
-                                <span className="text-blue-700 font-bold">
+                                <span className="text-blue-700 font-bold  m-2">
                                   Select Image
                                 </span>
                               </label>
