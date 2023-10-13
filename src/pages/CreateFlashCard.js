@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { Form, Field, Formik, FieldArray, ErrorMessage } from "formik";
 import validationSchema from "../components/ValidatioSchema";
 import { useDispatch, useSelector } from "react-redux"; // Import useDispatch and useSelector
@@ -10,15 +10,36 @@ import { GiCrossMark } from "react-icons/gi";
 // Import useHistory from react-router-dom
 
 function CreateFlashCard() {
-  // Local state to manage loading
+  
 
   const SUPPORTED_FORMATS = ["image/jpeg", "image/jpg", "image/png"];
 
-  // Initialize useHistory for navigation
+  
   const formData = useSelector((state) => state.flashcard.formData); // Access form data from Redux store
-  const flashcardData = useSelector((state) => state.flashcard.flashcards);
+  
   const dispatch = useDispatch();
 
+  // Function to update local storage with new data
+  const updateLocalStorage = (data) => {
+
+    // Retrieve existing data from local storage or initialize an empty array
+    const existingData = JSON.parse(localStorage.getItem("flashcards")) || [];
+
+      // Add the new data to the existing data array
+    existingData.push(data);
+
+    // Update the local storage with the combined data
+    localStorage.setItem("flashcards", JSON.stringify(existingData));
+  };
+
+  //to retrieve existing data from local storage and update the Redux store
+  useEffect(() => {
+    const localData = JSON.parse(localStorage.getItem("flashcards"));
+    if (localData) {
+      dispatch(updateFormData(localData));
+    }
+    // eslint-disable-next-line
+  }, []); 
   return (
     <div className="px-5 my-5 md:mt-10 ">
       <Formik
@@ -26,24 +47,10 @@ function CreateFlashCard() {
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
           //resetForm({ values: "" });
-          dispatch(updateFormData(values));
-          // console.log("Data dispatched to Redux store");
-
-          // Dispatch the action to create the flashcard in Redux store
-          dispatch(addFlashCard(values));
-          //  console.log("Flashcard data dispatched to Redux store");
-
-        //Store the flashcards array in local storage
-        // Assuming you have access to the store's state
-        
-         // Update local storage with the flashcards array
-         
-
-  
-       const updatedFlashcards = [...flashcardData,values];
-       localStorage.setItem("flashcards", JSON.stringify(updatedFlashcards));
-          
-        }}
+          dispatch(updateFormData(values)); // Dispatch data to update Redux store
+          dispatch(addFlashCard(values)); // Dispatch data to add to flashcards array in Redux store
+          updateLocalStorage(values); // Add new data to local storage
+           }}
       >
         {({ values, handleChange, handleBlur, setFieldValue }) => (
           <>

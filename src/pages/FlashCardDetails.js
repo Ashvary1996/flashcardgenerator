@@ -119,10 +119,11 @@ function FlashCardDetails() {
           </div>
         </div>
       ) : (
-        "kuch nhi hai yaar"
+        "no any other card created"
       )}
     </>
   );
 }
 
 export default FlashCardDetails;
+
