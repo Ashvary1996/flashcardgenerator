@@ -94,6 +94,7 @@ label {
   margin: auto;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  border: 2px solid red;
 }
 
 .parentCardDiv {

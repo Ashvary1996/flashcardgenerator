@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { Form, Field, Formik, FieldArray, ErrorMessage } from "formik";
 import validationSchema from "../components/ValidatioSchema";
 import { useDispatch, useSelector } from "react-redux"; // Import useDispatch and useSelector
@@ -10,39 +10,47 @@ import { GiCrossMark } from "react-icons/gi";
 // Import useHistory from react-router-dom
 
 function CreateFlashCard() {
-  // Local state to manage loading
+  
 
   const SUPPORTED_FORMATS = ["image/jpeg", "image/jpg", "image/png"];
 
-  // Initialize useHistory for navigation
+  
   const formData = useSelector((state) => state.flashcard.formData); // Access form data from Redux store
-  const flashcardData = useSelector((state) => state.flashcard.flashcards);
+  
   const dispatch = useDispatch();
 
+  // Function to update local storage with new data
+  const updateLocalStorage = (data) => {
+
+    // Retrieve existing data from local storage or initialize an empty array
+    const existingData = JSON.parse(localStorage.getItem("flashcards")) || [];
+
+      // Add the new data to the existing data array
+    existingData.push(data);
+
+    // Update the local storage with the combined data
+    localStorage.setItem("flashcards", JSON.stringify(existingData));
+  };
+
+  //to retrieve existing data from local storage and update the Redux store
+  useEffect(() => {
+    const localData = JSON.parse(localStorage.getItem("flashcards"));
+    if (localData) {
+      dispatch(updateFormData(localData));
+    }
+    // eslint-disable-next-line
+  }, []); 
   return (
-    <div>
+    <div className="px-5 my-5 md:mt-10 ">
       <Formik
         initialValues={formData} // Use formData from Redux store
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
           //resetForm({ values: "" });
-          dispatch(updateFormData(values));
-          // console.log("Data dispatched to Redux store");
-
-          // Dispatch the action to create the flashcard in Redux store
-          dispatch(addFlashCard(values));
-          //  console.log("Flashcard data dispatched to Redux store");
-
-          //Store the flashcards array in local storage
-          // Assuming you have access to the store's state
-
-          // Update local storage with the flashcards array
-
-          // const dataArr = JSON.parse(localStorage.getItem("flashcards"))|| [];
-          
-          const updatedFlashcards = [...flashcardData, values];
-          localStorage.setItem("flashcards", JSON.stringify(updatedFlashcards));
-        }}
+          dispatch(updateFormData(values)); // Dispatch data to update Redux store
+          dispatch(addFlashCard(values)); // Dispatch data to add to flashcards array in Redux store
+          updateLocalStorage(values); // Add new data to local storage
+           }}
       >
         {({ values, handleChange, handleBlur, setFieldValue }) => (
           <>
@@ -69,7 +77,7 @@ function CreateFlashCard() {
                     {values.groupImage ? (
                       <div className="flex ">
                         <img
-                          className="mx-5 w-24 h-24 mt- rounded-full"
+                          className="w-24 h-24 mx-5 rounded-full "
                           src={values.groupImage}
                           alt=""
                         />
@@ -84,7 +92,7 @@ function CreateFlashCard() {
                         className=" border w-34 h-[18px]  cursor-pointer px-3  mx-3 my-3 mt-[31px] p-4   border-gray-400 flex  items-center justify-center rounded  "
                       >
                         <MdOutlineUploadFile className=" text-[2em] text-blue-700" />
-                        <span className="text-blue-700 font-bold">
+                        <span className="font-bold text-blue-700">
                           Upload Image
                         </span>
                       </label>
@@ -94,7 +102,8 @@ function CreateFlashCard() {
                     </ErrorMessage>
                     {/* Image upload */}
                     <input
-                      onChange={(event) => {
+                      onChange={(event) => 
+                        {
                         // Validation on image
                         if (
                           event.target.files[0] &&
@@ -119,7 +128,8 @@ function CreateFlashCard() {
                             setFieldValue("groupImage", reader.result);
                           };
                         }
-                      }}
+                      }
+                    }
                       className="hidden"
                       name="groupImage"
                       id="groupImage"
@@ -149,19 +159,19 @@ function CreateFlashCard() {
                 <FieldArray
                   name="term"
                   render={(moreTerm) => (
-                    <div>
+                    <div className="p-5 mt-4 overflow-hidden bg-white rounded-md">
                       {values.term.map((term, index) => (
-                        <div className="termsDiv" key={index}>
-                          <div className="w-8 h-8 text-xl text-white text-center bg-red-600 rounded-full ">
+                        <div className="relative flex-wrap termsDiv md:flex md:space-x-10 md:items-center" key={index}>
+                          <div className="w-8 h-8 px-2 text-xl text-center text-white bg-red-500 rounded-full md:flex-col ">
                             {index + 1}
                           </div>
-                          <div className="flex flex-col">
+                          <div className="flex flex-col sm:flex-col">
                             {/* Term Name */}
                             <label htmlFor={`term.${index}.termName`}>
                               Enter Term*
                             </label>
                             <Field
-                              className="w-80 p-2"
+                              className="p-2 text-sm text-gray-900 border rounded-md w-50 border-slate-200 md:w-72 bg-gray-50"
                               name={`term.${index}.termName`}
                               id={`term.${index}.termName`}
                               value={term.termName}
@@ -181,7 +191,7 @@ function CreateFlashCard() {
                             </label>
                             <Field
                               as="textarea"
-                              className="w-80 p-2 h-10"
+                              className="h-10 p-2 text-sm text-gray-900 transition-all duration-500 ease-in-out border rounded-md resize-none w-55 border-slate-200 focus:h-24 md:w-72 bg-gray-50"
                               name={`term.${index}.termDefinition`}
                               id={`term.${index}.termDefinition`}
                               value={term.termDefinition}
@@ -198,14 +208,15 @@ function CreateFlashCard() {
                           <div className="flex">
                             {/* Term Image */}
                             {term.termImage ? (
-                              <div className="flex  ">
+                              <div className="my-5 space-x-4 space-y-4 md:flex ">
+                              
                                 <img
-                                  className="h-16 mt-2  max-w-[12rem] rounded"
+                                  className="h-16 mt-2  max-w-[12rem] rounded absolute top-0 right-0"
                                   src={term.termImage}
                                   alt=""
                                 />
                                 <GiCrossMark
-                                  className="text-lg hover:text-red-600 mt-1 mx-1"
+                                  className="mx-1 mt-1 text-lg hover:text-red-600"
                                   onClick={() =>
                                     setFieldValue(`term.${index}.termImage`, "")
                                   }
@@ -214,9 +225,9 @@ function CreateFlashCard() {
                             ) : (
                               <label
                                 htmlFor={`term.${index}.termImage`}
-                                className="w-44 h-[38px] cursor-pointer px-3 mx-3 mt-8 py-1 border border-gray-400 flex  items-center justify-center  rounded"
+                                className="w-44 h-[38px] cursor-pointer px-3 mx-3 mt-8 py-1  flex  items-center justify-center  rounded"
                               >
-                                <span className="text-blue-700 font-bold">
+                                <span className="font-bold text-blue-700 'border-blue-700  border flex mx-auto w-32  p-2 mt-5  rounded-lg shadow-md hover:-translate-y-px hover:bg-blue-700 hover:text-white transition-all ease-in-out ">
                                   Select Image
                                 </span>
                               </label>
@@ -289,7 +300,7 @@ function CreateFlashCard() {
                       ))}
 
                       <div
-                        className="inline-block text-blue-700 mt-4 font-medium cursor-pointer"
+                        className="inline-block mt-4 font-bold text-blue-700 cursor-pointer"
                         onClick={() => {
                           moreTerm.insert(values.term.length + 1, {
                             termName: "",
@@ -304,12 +315,14 @@ function CreateFlashCard() {
                   )}
                 ></FieldArray>
               </div>
+              <div className="relative pt-20">
               <button
                 type="submit"
-                className="bg-red-600 text-white text-lg p-2 pl-20 pr-20 rounded-md"
+                className="absolute left-0 right-0 w-40 px-6 py-2 mx-auto mt-10 text-lg font-bold text-red-500 transition-all ease-in-out bg-gray-100 border-red-500 rounded-lg shadow-lg bottom-1 hover:bg-red-500 hover:text-white hover:-translate-y-1 "
               >
                 Create
               </button>
+              </div>
             </Form>
           </>
         )}
