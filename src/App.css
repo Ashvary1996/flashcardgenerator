@@ -1,7 +1,7 @@
 .App {
   text-align: center;
 
-  /* background-color: rgba(44, 223, 223, 0.511);  */
+  /* background-color: rgba(44, 223, 223, 0.511); */
 }
 
 /* .App ::-webkit-scrollbar {
@@ -11,11 +11,11 @@
 .navbarDiv {
   margin: auto;
   margin-top: 1rem;
-  /* background-color: red;  */
-  width: 100%;
+  /* background-color: red; */
+  width: 80%;
   margin-bottom: 1rem;
-  padding: 10px; 
-}  
+  padding: 10px;
+}
 
 
 .navlinks:hover {
@@ -32,7 +32,7 @@
 
 .createFlashcardDiv {
   background-color: white;
-  width: 85%;
+  width: 78%;
   margin: auto;
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -42,12 +42,12 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  padding-left: 23px;
+  padding-left: 25px;
 }
 
 /*       temprory css     // */
 
- .error {
+.error {
   color: red;
 }
 
@@ -56,7 +56,7 @@ textarea {
   border: 1px solid grey;
   border-radius: 4px;
   padding: 5px;
-} 
+}
 
 label {
   color: rgb(129, 125, 125);
@@ -65,7 +65,7 @@ label {
   align-items: flex-start;
   margin-bottom: 5px;
 }
-/*
+
 .termsDiv {
   display: flex;
   flex-direction: row;
@@ -89,7 +89,7 @@ label {
 }
 
 /* 2nd Page */
-/* .myFlashcardDiv {
+.myFlashcardDiv {
   width: 78%;
   margin: auto;
   margin-top: 2rem;
@@ -119,10 +119,10 @@ label {
   margin-top: 40px;
 
 
-} */
+}
 
 /* /////////////CardDetails Page /////////////// */
-/* .shareBtns {
+.shareBtns {
   display: flex;
   flex-direction: row;
   background-color: white;
@@ -132,4 +132,4 @@ label {
   font-weight: 500;
   cursor: pointer;
   padding-right: 70px;
-}  */
+}
