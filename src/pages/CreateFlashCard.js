@@ -160,7 +160,7 @@ function CreateFlashCard() {
                   name="term"
                   render={(moreTerm) => (
                     <div className="p-5 mt-4 overflow-hidden bg-white rounded-md">
-                      {values.term.map((term, index) => (
+                      {values.term && values.term.map((term, index) => (
                         <div className="relative flex-wrap termsDiv md:flex md:space-x-10 md:items-center" key={index}>
                           <div className="w-8 h-8 px-2 text-xl text-center text-white bg-red-500 rounded-full md:flex-col ">
                             {index + 1}
