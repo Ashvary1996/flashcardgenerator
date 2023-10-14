@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect} from "react";
 import { Form, Field, Formik, FieldArray, ErrorMessage } from "formik";
 import validationSchema from "../components/ValidatioSchema";
 import { useDispatch, useSelector } from "react-redux"; // Import useDispatch and useSelector
@@ -10,7 +10,7 @@ import { GiCrossMark } from "react-icons/gi";
 // Import useHistory from react-router-dom
 
 function CreateFlashCard() {
-  const inputRef = useRef(null);
+ 
 
 
   const SUPPORTED_FORMATS = ["image/jpeg", "image/jpg", "image/png"];
@@ -287,13 +287,14 @@ function CreateFlashCard() {
                               {values.term.length <= 1 ? (
                                 null
                               ) : (
-                                // <label htmlFor={`term.${index}.termName`}>
+                                <label htmlFor={`term.${index}.termName`}>
 
                                   <BiEdit
                                     className="text-[1.8em] text-grey-600 m-2 cursor-pointer hover:text-yellow-500"
+
                                   />
 
-                                // </label>
+                                </label>
 
                               )}
                             </div>
