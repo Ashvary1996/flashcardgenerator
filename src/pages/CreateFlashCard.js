@@ -66,7 +66,7 @@ function CreateFlashCard() {
                       id="groupName"
                       type="text"
                       placeholder="Group Name"
-                      className="w-full md:w-80"
+                      className="w-full md:w-96"
                     ></Field>
                     <ErrorMessage name="groupName">
                       {(emsg) => <div className="error ">{emsg}</div>}
@@ -90,7 +90,7 @@ function CreateFlashCard() {
                     ) : (
                       <label
                         htmlFor="groupImage"
-                        className="order w-40 h-[12px]  cursor-pointer px-2  mx-3 my-3 mt-[31px] p-4  border border-gray-400 flex  items-center justify-center rounded  "
+                        className="order w-44 h-[12px]  cursor-pointer px-2  mx-3 my-3 mt-[31px] p-4   border-gray-400 flex  items-center justify-center rounded  "
                       >
                         <MdOutlineUploadFile className=" text-[2em] text-blue-700" />
                         <span className="font-bold text-blue-700">
@@ -146,7 +146,7 @@ function CreateFlashCard() {
                     name="groupDescription"
                     id="groupDescription"
                     placeholder="description "
-                    className="w-full md:w-[73%] h-44 resize-none"
+                    className="w-full md:w-[70%] h-44 resize-none"
                   ></Field>
                   <ErrorMessage name="groupDescription">
                     {(emsg) => <div className="error ">{emsg}</div>}
@@ -159,10 +159,10 @@ function CreateFlashCard() {
                 <FieldArray
                   name="term"
                   render={(moreTerm) => (
-                    <div className="p-3 mt-4 overflow-hidden bg-white rounded-md flex-col">
+                    <div className="p-5 mt-4 overflow-hidden bg-white rounded-md">
                       {values.term && values.term.map((term, index) => (
                         <div className="relative flex-wrap termsDiv w-full md:flex flex-row md:space-x-4 md:items-center border-gray-400" key={index}>
-                          <div className="w-8 h-8 px-2 text-xl text-center text-white bg-red-500 rounded-full  ">
+                          <div className="w-8 h-8 px-2 text-xl text-center text-white bg-red-500 rounded-full md:flex-col ">
                             {index + 1}
                           </div>
                           <div className="flex flex-col">
@@ -172,7 +172,7 @@ function CreateFlashCard() {
                             </label>
                             <Field
 
-                              className="p-2 mt-4 text-sm text-gray-900 border rounded-md w-50 border-gray-400 md:w-72 bg-gray-50"
+                              className="p-2 text-sm text-gray-900 border rounded-md w-50 border-slate-200 md:w-72 bg-gray-50"
                               name={`term.${index}.termName`}
                               id={`term.${index}.termName`}
                               value={term.termName}
@@ -192,7 +192,7 @@ function CreateFlashCard() {
                             </label>
                             <Field
                               as="textarea"
-                              className="h-14 p-2 mt-5 text-sm text-gray-700 transition-all duration-500 border-gray-400 border rounded-md resize-none w-full  focus:h-24 md:w-72 bg-gray-50 "
+                              className="h-10 p-2 text-sm text-gray-700 transition-all duration-500 ease-in-out border rounded-md resize-none w-full border-slate-200 focus:h-24 md:w-72 bg-gray-50"
                               name={`term.${index}.termDefinition`}
                               id={`term.${index}.termDefinition`}
                               value={term.termDefinition}

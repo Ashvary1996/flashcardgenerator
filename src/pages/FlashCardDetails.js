@@ -15,11 +15,9 @@ function FlashCardDetails() {
   const [term, setTerm] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
-  if (!flashcardData) { return <div>No data available.</div> }
+  // if (!flashcardData) { return <div>No data available.</div> }
   const nextCard = () => { if (flashcardData.term.length - 1 !== term) { setTerm(term + 1) } };
   const prevCard = () => { if (term !== 0) { setTerm(term - 1) } };
-
-
   return (
     <>
       <Modal showModal={showModal} setShowModal={setShowModal} />
@@ -52,19 +50,19 @@ function FlashCardDetails() {
 
             {/* Mid component */}
             <div className="displayTermBox commonBorder flex flex-row p-5 bg-white w-[60%] h-[300px] justify-around">
-              <p className="w-[50%] h-[100%]">
+              <p className="dImg w-[50%] h-[100%]">
                 <img className=" commonBorder max-w-[100%]  h-[100%] m-auto"
-                src={flashcardData.term[term].termImage}
-                alt=""
-              />
+                  src={flashcardData.term[term].termImage}
+                  alt=""
+                />
               </p>
-              <p className="w-[50%] h-[100%] border ml-4 text-gray-600 text-left ">
+              <p className="ddes w-[50%] h-[100%]  ml-4 text-gray-600 text-left overflow-y-auto ">
                 {flashcardData.term[term].termDefinition}
               </p>
             </div>
 
             {/* Right  print btns Div*/}
-            <div  >
+            <div className="shareBtnsDiv">
               <button
                 className="commonBorder shareBtns "
                 onClick={() => { setShowModal(true) }}>
@@ -75,9 +73,10 @@ function FlashCardDetails() {
                 {<LiaPrintSolid className="ico" />} Print
               </button>
             </div>
+
           </div>
           {/* paginations btns */}
-          <div className="flex justify-center items-center">
+          <div className="cursolBtn flex justify-center items-center">
             <MdNavigateBefore
               className="text-5xl cursor-pointer dark:text-gray-400 hover:text-red-500 "
               onClick={prevCard}
@@ -91,7 +90,10 @@ function FlashCardDetails() {
           </div>
         </div>
       ) : (
-        "kuch nhi hai yaar"
+        <>
+          <div className="text-7xl text-red-800 mt-32"> "No data available"</div>
+          <p className="text-xl mt-5">Please go to <i className="text-blue-500 underline hover:text-teal-600"><Link  to="/createflashcard" >Create New FlashCard</Link></i></p>
+        </>
       )}
     </>
   );

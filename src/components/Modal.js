@@ -42,9 +42,11 @@ function Modal(props) {
                       let linkCopy = window.location.href;
                       navigator.clipboard.writeText(linkCopy).then(_ => {
                         console.log(linkCopy)
+                        alert("Link Copied")
                       })
                     }}
                   >
+
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
