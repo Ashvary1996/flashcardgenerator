@@ -23,12 +23,18 @@
   border-bottom: 3px solid red;
   padding-bottom: 2px;
   border-radius: 0.5px;
-  transition: ease-in-out;
+  transition: color 1s;
 }
 
 .navlinks {
   padding-bottom: 8px;
 }
+
+.navlinks:active {
+  color: red;
+  transition: none;
+}
+
 
 .createFlashcardDiv {
   background-color: white;
@@ -44,8 +50,6 @@
   text-align: left;
   padding-left: 25px;
 }
-
-/*       temprory css     // */
 
 .error {
   color: red;
@@ -88,49 +92,119 @@ label {
 
 }
 
-/* 2nd Page */
+/* 2nd Page MyFlashCard */
 .myFlashcardDiv {
-  width: 78%;
-  margin: auto;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  border: 2px solid red;
-}
-
-.parentCardDiv {
+  /* border: 2px solid red; */
   display: flex;
   flex-wrap: wrap;
-  gap: 25px;
-
-
+  margin: auto;
+  width: 78%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  gap: 10px;
 }
 
 .childCards {
-  background-color: white;
+  /* border: 2px solid red; */
   display: flex;
-  width: 300px;
-  height: 250px;
   flex-direction: column;
   margin: auto;
-  gap: 20px;
+  background-color: white;
+  width: 300px;
+  height: 250px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  text-align: center;
   padding: 15px;
   border-radius: 5px;
   margin-top: 40px;
-
-
+  position: relative;
+  margin-bottom: 10px;
 }
 
-/* /////////////CardDetails Page /////////////// */
+
+/* /////////////FlashCardDetails Page /////////////// */
+.commonBorder {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 5px;
+}
+
 .shareBtns {
   display: flex;
   flex-direction: row;
   background-color: white;
   padding: 5px;
   margin-bottom: 20px;
-  color: gray;
+  color: rgb(93, 92, 92);
   font-weight: 500;
-  cursor: pointer;
-  padding-right: 70px;
+  width: 180px;
+  transition: background-color 1s;
+
+}
+
+.shareBtns:focus {
+  background-color: rgb(172, 23, 23);
+  color: white;
+  transition: none;
+}
+
+.shareBtns:hover {
+  background-color: gray;
+  color: white;
+}
+
+.ico {
+  font-size: larger;
+  margin: 0px 10px;
+}
+
+
+.modalDiv {
+  z-index: 9;
+  margin: 30px;
+  background: #363736be;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 100;
+
+}
+
+
+@media screen and (max-width: 800px) {
+  body {
+    /* background-color: lightgreen; */
+  }
+
+  .midBox {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+  }
+
+  .flashcardsDiv {
+    width: 100%;
+    height: fit-content;
+  }
+
+  .termDiv {
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+
+  .singleTerms {
+
+    /* border: 2px solid red; */
+  }
+
+  /*  */
+  .displayTermBox {
+    width: 100%;
+    height: fit-content;
+  }
 }

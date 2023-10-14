@@ -1,77 +1,51 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-//import { useHistory } from "react-router-dom";
-
-
 import logo from "../assets/logo.png";
-
 
 function MyFlashCard() {
   const dataS = JSON.parse(localStorage.getItem("flashcards"));
-  //console.log("fetchStorageData", dataS);
   const navigate = useNavigate();
-  // const history = useHistory();
-
   const [showCard, setShowCard] = useState(6);
 
   const handleViewCardsClick = (elem) => {
-    
-    navigate('/flashCardDetails',{state:elem})
-    //history.push({ pathname: "/flashCardDetails", state: elem });
+    navigate("/flashCardDetails", { state: elem });
   };
-  
+
   return (
     <div className="myFlashcardDiv">
-      <div className="parentCardDiv ">
-        {dataS
-          ? dataS.slice(0, showCard).map((elem, index) => (
-              <div key={index} className="childCards relative ">
-                <img
-                  alt=""
-                  className="border-2 bg-slate-400  w-20 h-20 m-auto rounded-full absolute -top-12 left-28 mb-10"
-                  src={elem.groupImage ? elem.groupImage : logo}
-                />
-                <h1 className="font-medium  pt-6">{elem.groupName}</h1>
-                <h2 className="text-gray-500">{elem.groupDescription.slice(0,60)}</h2>
-                <h2 className="text-gray-500 font-medium">
-                  {elem.term.length} Cards
-                </h2>
-                <button
-                  className="border-2 border-red-500 font-medium  m-auto text-red-600 w-40 cursor-pointer  rounded "
-                  onClick={() => handleViewCardsClick(elem)}
-                >
-                  View Cards
-                </button>
-              </div>
-            ))
-          : "No FlashCard Here Please Create New"}
-      </div>
+      {dataS
+        ? dataS.slice(0, showCard).map((elem, index) => (
+          <div key={index} className="childCards ">
+            <img className="border-2 bg-slate-400  w-20 h-20 m-auto rounded-full absolute -top-12 left-28 mb-10"
+              src={elem.groupImage ? elem.groupImage : logo} />
+            <h1 className="font-medium  mt-6">{elem.groupName}</h1>
+            <h2 className="text-gray-500 h-16 mt-3">
+              {elem.groupDescription.length > 60 ? elem.groupDescription.slice(0, 60) + "..." : null} </h2>
+            <h2 className="text-gray-500 font-medium mt-3">  {elem.term.length} Cards </h2>
+            <button
+              className="border-2 border-red-500 font-medium  m-auto text-red-600 w-52 h-10 rounded hover:bg-red-500 hover:text-white duration-300"
+              onClick={() => handleViewCardsClick(elem)} >  View Cards
+            </button>
+          </div>
+        ))
+        : "No FlashCard Here Please Create New"}
 
-      {dataS ? (
-        <div>
-          {dataS.length > 6 && dataS.length !== 0 ? (
-            <div className="flex justify-end mr-10 mt-5">
-              {dataS.length === showCard ? (
-                <button
-                  onClick={() => {
-                    setShowCard(6);
-                  }}
-                  className="mb-24 font-bold  cursor-pointer w-24 mx-5 text-red-700"
-                >
+      {/* See all and See less Button if we have more than 6 FlashCard */}
+      {dataS && dataS.length > 6 ? (
+        <div className="w-[100%]">
+          <div className="mt-5 text-right " >
+            {dataS.length === showCard ?
+              (
+                <button onClick={() => { setShowCard(6); }}
+                  className="mb-24 font-bold w-24 mx-5 text-red-700">
                   See less
-                </button>
-              ) : (
-                <button
-                  onClick={() => {
-                    setShowCard(dataS.length);
-                  }}
-                  className="mb-24 font-bold  cursor-pointer w-24 mx-5 text-red-700"
-                >
+                </button>) : (
+                <button onClick={() => { setShowCard(dataS.length) }}
+                  className="mb-24 font-bold w-24 mx-5 text-red-500 hover:text-red-700">
                   See all
                 </button>
               )}
-            </div>
-          ) : null}
+          </div>
         </div>
       ) : null}
     </div>
