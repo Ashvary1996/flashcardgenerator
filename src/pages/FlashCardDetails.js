@@ -50,17 +50,19 @@ function FlashCardDetails() {
 
             {/* Mid component */}
             <div className="displayTermBox commonBorder flex flex-row p-5 bg-white w-[60%] h-[300px] justify-around">
-              <p><img className=" commonBorder max-w-[100%]  h-[100%] m-auto"
-                src={flashcardData.term[term].termImage}
-                alt=""
-              /></p>
-              <p className="w-[50%] ml-4 text-gray-600 text-left ">
+              <p className="dImg w-[50%] h-[100%]">
+                <img className=" commonBorder max-w-[100%]  h-[100%] m-auto"
+                  src={flashcardData.term[term].termImage}
+                  alt=""
+                />
+              </p>
+              <p className="ddes w-[50%] h-[100%]  ml-4 text-gray-600 text-left overflow-y-auto ">
                 {flashcardData.term[term].termDefinition}
               </p>
             </div>
 
             {/* Right  print btns Div*/}
-            <div  >
+            <div className="shareBtnsDiv">
               <button
                 className="rounded-md commonBorder shareBtns"
                 onClick={() => { setShowModal(true) }}>
@@ -77,7 +79,7 @@ function FlashCardDetails() {
           <p className='mx-auto  h-3 w-60 bg-black opacity-5 mt-3 rounded-[100%] shadow-xl'></p>
           
           {/* paginations btns */}
-          <div className="flex justify-center items-center">
+          <div className="cursolBtn flex justify-center items-center">
             <MdNavigateBefore
               className="text-5xl cursor-pointer dark:text-gray-400 hover:text-red-500 "
               onClick={prevCard}
