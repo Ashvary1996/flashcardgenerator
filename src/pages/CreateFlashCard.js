@@ -10,8 +10,6 @@ import { GiCrossMark } from "react-icons/gi";
 // Import useHistory from react-router-dom
 
 function CreateFlashCard() {
- 
-
 
   const SUPPORTED_FORMATS = ["image/jpeg", "image/jpg", "image/png"];
 
@@ -78,7 +76,7 @@ function CreateFlashCard() {
                     {values.groupImage ? (
                       <div className="flex ">
                         <img
-                          className="mx-2 w-36 h-40 mt- rounded-full text-center "
+                          className="h-40 mx-2 text-center rounded-full w-36 mt- "
                           src={values.groupImage}
                           alt=""
                         />
@@ -90,10 +88,10 @@ function CreateFlashCard() {
                     ) : (
                       <label
                         htmlFor="groupImage"
-                        className="order w-44 h-[12px]  cursor-pointer px-2  mx-3 my-3 mt-[31px] p-4   border-gray-400 flex  items-center justify-center rounded  "
+                        className="order w-40 h-[12px]  cursor-pointer px-2  mx-3 my-3 mt-[31px] p-4  border border-gray-400 flex  items-center justify-center rounded  "
                       >
                         <MdOutlineUploadFile className=" text-[2em] text-blue-700" />
-                        <span className="font-bold text-blue-700">
+                        <span className="font-bold text-blue-700 ">
                           Upload Image
                         </span>
                       </label>
@@ -159,10 +157,10 @@ function CreateFlashCard() {
                 <FieldArray
                   name="term"
                   render={(moreTerm) => (
-                    <div className="p-5 mt-4 overflow-hidden bg-white rounded-md">
+                    <div className="p-3 mt-4 overflow-hidden bg-white rounded-md flex-col">
                       {values.term && values.term.map((term, index) => (
                         <div className="relative flex-wrap termsDiv w-full md:flex flex-row md:space-x-4 md:items-center border-gray-400" key={index}>
-                          <div className="w-8 h-8 px-2 text-xl text-center text-white bg-red-500 rounded-full md:flex-col ">
+                          <div className="w-8 h-8 px-2 text-xl text-center text-white bg-red-500 rounded-full  ">
                             {index + 1}
                           </div>
                           <div className="flex flex-col">
@@ -172,7 +170,7 @@ function CreateFlashCard() {
                             </label>
                             <Field
 
-                              className="p-2 text-sm text-gray-900 border rounded-md w-50 border-slate-200 md:w-72 bg-gray-50"
+                              className="p-2 mt-4 text-sm text-gray-900 border rounded-md w-50 border-gray-400 md:w-72 bg-gray-50"
                               name={`term.${index}.termName`}
                               id={`term.${index}.termName`}
                               value={term.termName}
@@ -192,7 +190,7 @@ function CreateFlashCard() {
                             </label>
                             <Field
                               as="textarea"
-                              className="h-10 p-2 text-sm text-gray-700 transition-all duration-500 ease-in-out border rounded-md resize-none w-full border-slate-200 focus:h-24 md:w-72 bg-gray-50"
+                              className="h-14 p-2 mt-5 text-sm text-gray-700 transition-all duration-500 border-gray-400 border rounded-md resize-none w-full  focus:h-24 md:w-72 bg-gray-50 "
                               name={`term.${index}.termDefinition`}
                               id={`term.${index}.termDefinition`}
                               value={term.termDefinition}
@@ -209,10 +207,10 @@ function CreateFlashCard() {
                           <div className="flex">
                             {/* Term Image */}
                             {term.termImage ? (
-                              <div className="my-5 space-x-4 space-y-4  ">
+                              <div className="my-5 space-x-4 space-y-4 ">
 
                                 <img
-                                  className="h-16 mt-2  max-w-[12rem] rounded absolute top-0 right-0"
+                                  className="h-16 mt-4  max-w-[12rem] rounded absolute top-0 right-0"
                                   src={term.termImage}
                                   alt=""
                                 />
@@ -228,7 +226,7 @@ function CreateFlashCard() {
                                 htmlFor={`term.${index}.termImage`}
                                 className="w-44 h-[44px] cursor-pointer px-3 mx-3 mt-8 py-1  flex  items-center justify-center  rounded"
                               >
-                                <span className="font-bold text-blue-700 'border-blue-700  border flex mx-auto w-32  p-2 mt-5  rounded-lg shadow-md hover:-translate-y-px hover:bg-blue-700 hover:text-white transition-all ease-in-out ">
+                                <span className="flex w-32 p-2 mx-auto mt-5 font-bold text-blue-700 transition-all ease-in-out border border-blue-700 rounded-lg shadow-md hover:-translate-y-px hover:bg-blue-700 hover:text-white ">
                                   Select Image
                                 </span>
                               </label>
