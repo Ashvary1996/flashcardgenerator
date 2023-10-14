@@ -55,7 +55,7 @@ function CreateFlashCard() {
         {({ values, handleChange, handleBlur, setFieldValue }) => (
           <>
             <Form>
-              <div className="createFlashcardDiv" >
+              <div className="createFlashcardDiv">
                 <div className="flex flex-row " name="groupUpperdiv">
                   <div className="flex flex-col">
                     {/* Group Name */}
@@ -66,7 +66,6 @@ function CreateFlashCard() {
                       type="text"
                       placeholder="Group Name"
                       className="w-80"
-
                     ></Field>
                     <ErrorMessage name="groupName">
                       {(emsg) => <div className="error ">{emsg}</div>}
@@ -78,7 +77,7 @@ function CreateFlashCard() {
                     {values.groupImage ? (
                       <div className="flex ">
                         <img
-                          className="w-24 h-24 mx-5 rounded-full "
+                          className="mx-2 w-36 h-40 mt- rounded-full text-center "
                           src={values.groupImage}
                           alt=""
                         />
@@ -90,7 +89,7 @@ function CreateFlashCard() {
                     ) : (
                       <label
                         htmlFor="groupImage"
-                        className=" border w-34 h-[18px]  cursor-pointer px-3  mx-3 my-3 mt-[31px] p-4   border-gray-400 flex  items-center justify-center rounded  "
+                        className="order w-44 h-[12px]  cursor-pointer px-2  mx-3 my-3 mt-[31px] p-4   border-gray-400 flex  items-center justify-center rounded  "
                       >
                         <MdOutlineUploadFile className=" text-[2em] text-blue-700" />
                         <span className="font-bold text-blue-700">
@@ -146,7 +145,7 @@ function CreateFlashCard() {
                     name="groupDescription"
                     id="groupDescription"
                     placeholder="description "
-                    className="w-[70%] h-40"
+                    className="w-full md:w-[70%] h-44 resize-none"
                   ></Field>
                   <ErrorMessage name="groupDescription">
                     {(emsg) => <div className="error ">{emsg}</div>}
@@ -160,12 +159,12 @@ function CreateFlashCard() {
                   name="term"
                   render={(moreTerm) => (
                     <div className="p-5 mt-4 overflow-hidden bg-white rounded-md">
-                      {values.term.map((term, index) => (
-                        <div className="relative flex-wrap termsDiv md:flex md:space-x-10 md:items-center" key={index}>
+                      {values.term && values.term.map((term, index) => (
+                        <div className="relative flex-wrap termsDiv w-full md:flex flex-row md:space-x-4 md:items-center border-gray-400" key={index}>
                           <div className="w-8 h-8 px-2 text-xl text-center text-white bg-red-500 rounded-full md:flex-col ">
                             {index + 1}
                           </div>
-                          <div className="flex flex-col sm:flex-col">
+                          <div className="flex flex-col">
                             {/* Term Name */}
                             <label htmlFor={`term.${index}.termName`}>
                               Enter Term*
@@ -191,7 +190,7 @@ function CreateFlashCard() {
                             </label>
                             <Field
                               as="textarea"
-                              className="h-10 p-2 text-sm text-gray-900 transition-all duration-500 ease-in-out border rounded-md resize-none w-55 border-slate-200 focus:h-24 md:w-72 bg-gray-50"
+                              className="h-10 p-2 text-sm text-gray-700 transition-all duration-500 ease-in-out border rounded-md resize-none w-full border-slate-200 focus:h-24 md:w-72 bg-gray-50"
                               name={`term.${index}.termDefinition`}
                               id={`term.${index}.termDefinition`}
                               value={term.termDefinition}
@@ -209,7 +208,7 @@ function CreateFlashCard() {
                             {/* Term Image */}
                             {term.termImage ? (
                               <div className="my-5 space-x-4 space-y-4 md:flex ">
-
+                              
                                 <img
                                   className="h-16 mt-2  max-w-[12rem] rounded absolute top-0 right-0"
                                   src={term.termImage}
@@ -225,7 +224,7 @@ function CreateFlashCard() {
                             ) : (
                               <label
                                 htmlFor={`term.${index}.termImage`}
-                                className="w-44 h-[38px] cursor-pointer px-3 mx-3 mt-8 py-1  flex  items-center justify-center  rounded"
+                                className="w-44 h-[44px] cursor-pointer px-3 mx-3 mt-8 py-1  flex  items-center justify-center  rounded"
                               >
                                 <span className="font-bold text-blue-700 'border-blue-700  border flex mx-auto w-32  p-2 mt-5  rounded-lg shadow-md hover:-translate-y-px hover:bg-blue-700 hover:text-white transition-all ease-in-out ">
                                   Select Image
@@ -300,9 +299,7 @@ function CreateFlashCard() {
                       ))}
 
                       <div
-
                         className="inline-block mt-4 font-bold text-blue-700 cursor-pointer"
-
                         onClick={() => {
                           moreTerm.insert(values.term.length + 1, {
                             termName: "",
