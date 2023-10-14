@@ -10,7 +10,7 @@ function MyFlashCard() {
   const handleViewCardsClick = (elem) => {
     navigate("/flashCardDetails", { state: elem });
   };
-
+ 
   return (
     <div className="myFlashcardDiv">
       {dataS
@@ -20,7 +20,7 @@ function MyFlashCard() {
               src={elem.groupImage ? elem.groupImage : logo} />
             <h1 className="font-medium  mt-6">{elem.groupName}</h1>
             <h2 className="text-gray-500 h-16 mt-3">
-              {elem.groupDescription.length > 60 ? elem.groupDescription.slice(0, 60) + "..." : null} </h2>
+              {elem.groupDescription.length > 60 ? elem.groupDescription.slice(0, 60) + "..." :elem.groupDescription} </h2>
             <h2 className="text-gray-500 font-medium mt-3">  {elem.term.length} Cards </h2>
             <button
               className="border-2 border-red-500 font-medium  m-auto text-red-600 w-52 h-10 rounded hover:bg-red-500 hover:text-white duration-300"

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Form, Field, Formik, FieldArray, ErrorMessage } from "formik";
 import validationSchema from "../components/ValidatioSchema";
 import { useDispatch, useSelector } from "react-redux"; // Import useDispatch and useSelector
@@ -10,6 +10,7 @@ import { GiCrossMark } from "react-icons/gi";
 // Import useHistory from react-router-dom
 
 function CreateFlashCard() {
+  const inputRef = useRef(null);
 
 
   const SUPPORTED_FORMATS = ["image/jpeg", "image/jpg", "image/png"];
@@ -56,7 +57,7 @@ function CreateFlashCard() {
           <>
             <Form>
               <div className="createFlashcardDiv">
-                <div className="flex flex-row " name="groupUpperdiv">
+                <div className="flex flex-col md:flex-row " name="groupUpperdiv">
                   <div className="flex flex-col">
                     {/* Group Name */}
                     <label htmlFor="groupName"> Create Group*</label>
@@ -65,7 +66,7 @@ function CreateFlashCard() {
                       id="groupName"
                       type="text"
                       placeholder="Group Name"
-                      className="w-80"
+                      className="w-full md:w-96"
                     ></Field>
                     <ErrorMessage name="groupName">
                       {(emsg) => <div className="error ">{emsg}</div>}
@@ -154,7 +155,7 @@ function CreateFlashCard() {
               </div>
 
               {/* Term Div */}
-              <div className="createFlashcardDiv" >
+              <div className="createFlashcardDiv">
                 <FieldArray
                   name="term"
                   render={(moreTerm) => (
@@ -170,6 +171,7 @@ function CreateFlashCard() {
                               Enter Term*
                             </label>
                             <Field
+
                               className="p-2 text-sm text-gray-900 border rounded-md w-50 border-slate-200 md:w-72 bg-gray-50"
                               name={`term.${index}.termName`}
                               id={`term.${index}.termName`}
@@ -207,8 +209,8 @@ function CreateFlashCard() {
                           <div className="flex">
                             {/* Term Image */}
                             {term.termImage ? (
-                              <div className="my-5 space-x-4 space-y-4 md:flex ">
-                              
+                              <div className="my-5 space-x-4 space-y-4  ">
+
                                 <img
                                   className="h-16 mt-2  max-w-[12rem] rounded absolute top-0 right-0"
                                   src={term.termImage}
@@ -283,14 +285,16 @@ function CreateFlashCard() {
                                 />
                               )}
                               {values.term.length <= 1 ? (
-                                ""
+                                null
                               ) : (
-                                <BiEdit
-                                  className="text-[1.8em] text-grey-600 m-2 cursor-pointer hover:text-yellow-500"
-                                  onClick={() => {
-                                    setFieldValue(`term.${index}.termName`, "");
-                                  }}
-                                />
+                                // <label htmlFor={`term.${index}.termName`}>
+
+                                  <BiEdit
+                                    className="text-[1.8em] text-grey-600 m-2 cursor-pointer hover:text-yellow-500"
+                                  />
+
+                                // </label>
+
                               )}
                             </div>
                           </div>
@@ -301,7 +305,7 @@ function CreateFlashCard() {
                       <div
                         className="inline-block mt-4 font-bold text-blue-700 cursor-pointer"
                         onClick={() => {
-                          moreTerm.insert(values.term.length + 1, {
+                          moreTerm.insert(values.term + 1, {
                             termName: "",
                             termDefinition: "",
                             termImage: "",
@@ -316,7 +320,6 @@ function CreateFlashCard() {
               </div>
               <div className="relative pt-20">
                 <button
-
                   type="submit"
                   className="absolute left-0 right-0 w-40 px-6 py-2 mx-auto mt-10 text-lg font-bold text-red-500 transition-all ease-in-out bg-gray-100 border-red-500 rounded-lg shadow-lg bottom-1 hover:bg-red-500 hover:text-white hover:-translate-y-1 "
                 >

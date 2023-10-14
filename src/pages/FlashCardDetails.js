@@ -52,11 +52,13 @@ function FlashCardDetails() {
 
             {/* Mid component */}
             <div className="displayTermBox commonBorder flex flex-row p-5 bg-white w-[60%] h-[300px] justify-around">
-              <p><img className=" commonBorder max-w-[100%]  h-[100%] m-auto"
+              <p className="border border-red-500 w-[50%] h-[100%]">
+                <img className=" commonBorder max-w-[100%]  h-[100%] m-auto"
                 src={flashcardData.term[term].termImage}
                 alt=""
-              /></p>
-              <p className="w-[50%] ml-4 text-gray-600 text-left ">
+              />
+              </p>
+              <p className="w-[50%] h-[100%] border border-red-500 ml-4 text-gray-600 text-left ">
                 {flashcardData.term[term].termDefinition}
               </p>
             </div>
