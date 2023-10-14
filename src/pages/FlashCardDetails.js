@@ -75,7 +75,9 @@ function FlashCardDetails() {
             </div>
           </div>
          
-          <p className='mx-auto  h-3 w-60 bg-black opacity-5 mt-3 rounded-[100%] shadow-xl'></p>
+          <p className='mx-auto  h-3 w-60 bg-black opacity-5 mt-3 rounded-[100%] shadow-xl'>
+            
+          </p>
           
           {/* paginations btns */}
           <div className="flex items-center justify-center">
