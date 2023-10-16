@@ -34,20 +34,19 @@ function MyFlashCard() {
 
   return (
     <div className="myFlashcardDiv w-[78%] m-auto ">
-      <div className="  text-right pr-10 text-lg text-gray-500 font-bold ">Total FlashCards : {dataS.length}</div>
-
+      <div className="  text-right pr-10 text-sm absolute right-24   text-gray-500 font-bold ">Total FlashCards : {dataS.length}</div>
       <div className="displayFlashcardDiv " >
         {dataS ? dataS.slice(0, showCard).map((elem, index) => (
           <div key={index} className="childCards ">
-            <button className="del absolute text-gray-500 -right-3 -top-5 hidden  text-4xl hover:text-5xl hover:text-red-600 " onClick={() => del(elem, index)}><GiCrossMark /></button>
-            <img className="border-2 bg-slate-400  w-20 h-20 m-auto rounded-full absolute -top-12 left-[36%] mb-10"
+            <button className="del absolute text-gray-500 -right-3 -top-5 hidden  text-3xl hover:text-4xl hover:text-red-600 " onClick={() => del(elem, index)}><GiCrossMark /></button>
+            <img className="border-2 bg-slate-400  w-16 h-16 m-auto rounded-full absolute -top-12 left-[39.3%] mb-10"
               src={elem.groupImage ? elem.groupImage : logo} />
-            <h1 className="font-medium  mt-6">{elem.groupName}</h1>
-            <h2 className="text-gray-500 h-16 mt-3">
+            <h1 className="font-bold  mt-4 ">{elem.groupName}</h1>
+            <h2 className="text-gray-700 h-10 mt-1">
               {elem.groupDescription.length > 60 ? elem.groupDescription.slice(0, 60) + "..." : elem.groupDescription} </h2>
-            <h2 className="text-gray-500 font-medium mt-3">  {elem.term.length} Cards </h2>
+            <h2 className="text-gray-500 font-bold mt-8">  {elem.term.length} Cards </h2>
             <button
-              className="border-2 border-red-500 font-medium  m-auto text-red-600 w-52 h-10 rounded hover:bg-red-500 hover:text-white duration-300"
+              className="border-2 border-red-500 font-medium  m-auto text-red-600 w-40 h-8  rounded hover:bg-red-500 hover:text-white duration-300"
               onClick={() => handleViewCardsClick(elem)} >  View Cards
             </button>
           </div>
