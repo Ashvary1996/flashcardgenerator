@@ -1,14 +1,11 @@
-## `FLASHCARD GENERATOR`
+# `FLASHCARD GENERATOR`
+
+## `PROJECT DESCRIPTION`
+
 This project assignment from Almabetter serves as a front-end capstone task. 
 It involves developing a flashcard generator application that facilitates the creation of multiple flashcards within a group.
 This application offers features such as `card creation`, `the addition of both text and images`, `sharing`, `downloading`, `deletion`, and even the option to print the generated flashcards.
 The user interface of this app is designed to be fully responsive, ensuring a seamless experience across various devices.
-
-## `DESCRIPTION`
-
-It was crafted within a team comprised of four members.
-This project was constructed utilizing a variety of frontend technologies, including the `React` `JavaScript` library for the core structure, `Tailwind CSS` to craft a responsive user interface, `Redux` for efficient state management, `React-icons`, `Formik`, `React-Router-Dom`, and `react-testing-library` for testing purposes.
-The project also includes programming languages like `HTML`, `CSS`, and `JavaScript`.
 
 This Project Consists of 3 main pages:
 1. ### `Create New Page`
@@ -28,4 +25,35 @@ This Project Consists of 3 main pages:
     Additionally, options for sharing, printing, and downloading the flashcards are available.
 
 
-   Deploy Link :
+## `TECHNOLOGIES USED`
+
+This project was constructed utilizing a variety of frontend technologies, including the `React` `JavaScript` library for the core structure, `Tailwind CSS` to craft a responsive user interface, `Redux` for efficient state management, `React-icons`, `Formik`, `React-Router-Dom`, and `react-testing-library` for testing purposes.
+The project also includes programming languages like `HTML`, `CSS`, and `JavaScript`.
+
+  ## `Deploy Link` 
+  <br>
+  
+  ## `PROJECT CLONING AND RUNNING`
+  Clone the project
+
+```bash
+  git clone https://github.com/Ashvary1996/bookmyshow.git
+```
+Go to the project directory
+```bash
+  cd flashcardgenerator
+```
+Install dependencies on both server and client folder
+
+```bash
+  npm install
+```
+
+
+  ## `COLLABORATORS`
+  It was crafted within a team comprised of four members.
+ - [@Ashvary Gidian](https://github.com/Ashvary1996)
+ - [@MD Shahnawaz](https://github.com/Shahnawaz1967)
+ - [@Sudhir kumar](https://github.com/Sudhir561)
+ - [@Prachi Rajput](https://github.com/Prachi-Rajput)
+   
