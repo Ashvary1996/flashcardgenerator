@@ -19,7 +19,7 @@ function MyFlashCard() {
 
   const del = (delClickedItem) => {
     console.log("deleting FlashCard...");
-    if (confirm("Are You Sure you want to delete This Flashcard !") == true) {
+    if (window.confirm("Are You Sure you want to delete This Flashcard !") === true) {
       let newData = [...dataS]
       newData = dataS.filter((elem) => {
         return elem !== delClickedItem;
