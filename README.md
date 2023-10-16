@@ -37,7 +37,7 @@ The project also includes programming languages like `HTML`, `CSS`, and `JavaScr
   Clone the project
 
 ```bash
-  git clone https://github.com/Ashvary1996/bookmyshow.git
+  git clone https://github.com/Ashvary1996/flashcardgenerator.git
 ```
 Go to the project directory
 ```bash
