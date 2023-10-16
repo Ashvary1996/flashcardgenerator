@@ -13,6 +13,7 @@ function FlashCardDetails() {
   const location = useLocation();
   const flashcardData = location.state;
   const [term, setTerm] = useState(0);
+
   const [showModal, setShowModal] = useState(false);
 
   // if (!flashcardData) { return <div>No data available.</div> }
@@ -22,6 +23,7 @@ function FlashCardDetails() {
   return (
     <>
       <Modal showModal={showModal} setShowModal={setShowModal} />
+      
       {flashcardData ? (
         <div className="flashcardDetailsPAge m-auto mx-[10%]  ">
           <div className="flex pt-1 m-auto flew-row">
