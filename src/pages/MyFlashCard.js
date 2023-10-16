@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { GiCrossMark } from "react-icons/gi";
+import { Link } from "react-router-dom";
 
 
 function MyFlashCard() {
@@ -19,7 +20,7 @@ function MyFlashCard() {
 
   const del = (delClickedItem) => {
     console.log("deleting FlashCard...");
-    if (window.confirm("Are You Sure you want to delete This Flashcard !") === true) {
+    if (window.confirm("Are You Sure you want to delete This Flashcard !") ===true) {
       let newData = [...dataS]
       newData = dataS.filter((elem) => {
         return elem !== delClickedItem;
