@@ -4,7 +4,7 @@ import logo from "../assets/logo.png";
 import { GiCrossMark } from "react-icons/gi";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import DeleteModal from "../components/DeleteModal";
+// import DeleteModal from "../components/DeleteModal";
 
 function MyFlashCard() {
   const [flashCardData, setFlashCardData] = useState(localStorage.getItem("flashcards")
@@ -38,7 +38,7 @@ function MyFlashCard() {
         <ToastContainer />
         <div className="  text-right pr-10 text-sm absolute right-24   text-gray-500 font-bold ">Total FlashCards : {flashCardData.length}</div>
         <div className="displayFlashcardDiv " >
-          {flashCardData ? flashCardData.slice(0, showCard).map((elem, index) => (
+          {flashCardData.length !== 0 ? flashCardData.slice(0, showCard).map((elem, index) => (
             <div key={index} className="childCards ">
               <button className="del absolute text-gray-500 -right-3 -top-5 hidden  text-3xl hover:text-4xl hover:text-red-600 " onClick={() => del(elem, index)}><GiCrossMark /></button>
               <img className="border-2 bg-slate-400  w-16 h-16 m-auto rounded-full absolute -top-12 left-[39.3%] mb-10"

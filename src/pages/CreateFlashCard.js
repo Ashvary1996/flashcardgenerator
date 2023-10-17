@@ -10,6 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 
 function CreateFlashCard() {
+ 
   const SUPPORTED_FORMATS = ["image/jpeg", "image/jpg", "image/png"];
   const formData = useSelector((state) => state.flashcard.formData); // Access form data from Redux store
   const [flashCardData, setFlashCardData] = useState(localStorage.getItem("flashcards")
@@ -27,7 +28,7 @@ function CreateFlashCard() {
       position: toast.POSITION.TOP_RIGHT, pauseOnFocusLoss: false
     });
   }
-
+ 
   return (
     <div className="createFlashcardDiv  md:mt-10 ">
       <ToastContainer />
@@ -39,9 +40,10 @@ function CreateFlashCard() {
           localStorage.setItem("flashcards", JSON.stringify(flashCardData));
           console.log("FlashCard Created Successfully", flashCardData);
           toast.success("FlashCard Created Successfully", { theme: "colored", position: toast.POSITION.TOP_CENTER, pauseOnFocusLoss: false })
-          // resetForm({ values: "" });
-        }}
-      >
+          resetForm({ values: "" });
+     
+        }}  
+      > 
         {({ values, handleChange, handleBlur, setFieldValue }) => (
           <Form>
             <div className=" createGroupDiv">

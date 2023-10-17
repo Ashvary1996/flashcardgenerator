@@ -80,12 +80,12 @@ function FlashCardDetails() {
           <div className="cursolBtn flex justify-center items-center">
             <MdNavigateBefore
               className="text-5xl cursor-pointer dark:text-gray-400 hover:text-red-500 "
-              onClick={prevCard} />
+              onClick={prevCard}/>
             <span className="ml-10">{term + 1}/</span>
             <span className="mr-10">{flashcardData.term.length}</span>
             <MdNavigateNext
               className="text-5xl cursor-pointer dark:text-gray-400 hover:text-red-500 "
-              onClick={nextCard} />
+              onClick={nextCard}/>
           </div>
         </div>
       ) : (
