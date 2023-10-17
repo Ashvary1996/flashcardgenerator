@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Field, Formik, FieldArray, ErrorMessage } from "formik";
 import validationSchema from "../components/ValidatioSchema";
 import { useDispatch, useSelector } from "react-redux"; // Import useDispatch and useSelector
@@ -8,44 +8,58 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { BiEdit } from "react-icons/bi";
 import { GiCrossMark } from "react-icons/gi";
 // Import useHistory from react-router-dom
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 function CreateFlashCard() {
-
   const SUPPORTED_FORMATS = ["image/jpeg", "image/jpg", "image/png"];
   const formData = useSelector((state) => state.flashcard.formData); // Access form data from Redux store
   const dispatch = useDispatch();
+
+  const [flashCardData, setFlashCardData] = useState(localStorage.getItem("flashcards")
+    ? JSON.parse(localStorage.getItem("flashcards"))
+    : []
+  );
+
   // Function to update local storage with new data
-  const updateLocalStorage = (data) => {
+  // const updateLocalStorage = (data) => {
+  //   // Retrieve existing data from local storage or initialize an empty array
+  //   const existingData = JSON.parse(localStorage.getItem("flashcards")) || [];
+  //   // Add the new data to the existing data array
+  //   existingData.push(data);
+  //   // Update the local storage with the combined data
+  //   localStorage.setItem("flashcards", JSON.stringify(existingData));
+  //   const localData = JSON.parse(localStorage.getItem("flashcards"));
 
-    // Retrieve existing data from local storage or initialize an empty array
-    const existingData = JSON.parse(localStorage.getItem("flashcards")) || [];
-
-    // Add the new data to the existing data array
-    existingData.push(data);
-
-    // Update the local storage with the combined data
-    localStorage.setItem("flashcards", JSON.stringify(existingData));
-  };
+  // };
 
   //to retrieve existing data from local storage and update the Redux store
-  useEffect(() => {
-    const localData = JSON.parse(localStorage.getItem("flashcards"));
-    if (localData) {
-      dispatch(updateFormData(localData));
-    }
-    // eslint-disable-next-line
-  }, []);
-  console.log(formData);
+  // useEffect(() => {
+  //   // const localData = JSON.parse(localStorage.getItem("flashcards"));
+  //   if (flashCardData) {
+  //     dispatch(updateFormData(flashCardData));
+  //   }
+  //   // eslint-disable-next-line
+  // }, []);
+
   return (
     <div className="createFlashcardDiv  md:mt-10 ">
+      <ToastContainer />
       <Formik
         initialValues={formData} // Use formData from Redux store
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
           //resetForm({ values: "" });
-          dispatch(updateFormData(values)); // Dispatch data to update Redux store
-          dispatch(addFlashCard(values)); // Dispatch data to add to flashcards array in Redux store
-          updateLocalStorage(values); // Add new data to local storage
+          // dispatch(updateFormData(values)); // Dispatch data to update Redux store
+          // dispatch(addFlashCard(values)); // Dispatch data to add to flashcards array in Redux store
+          // updateLocalStorage(values); // Add new data to local storage
+          localStorage.setItem("flashcards", JSON.stringify(flashCardData));
+          setFlashCardData([...flashCardData, values])
+          console.log("FlashCard Created Successfully", flashCardData);
+          toast.success("FlashCard Created Successfully", { theme: "colored", position: toast.POSITION.TOP_CENTER, pauseOnFocusLoss: false })
+
         }}
       >
         {({ values, handleChange, handleBlur, setFieldValue }) => (
@@ -275,7 +289,11 @@ function CreateFlashCard() {
                               ) : (
                                 <RiDeleteBin6Line
                                   className="text-[1.8em]  text-gray-500 m-2 cursor-pointer hover:text-red-600"
-                                  onClick={() => moreTerm.remove(index)}
+                                  onClick={() => {
+                                    moreTerm.remove(index), toast.warn("Term Card Deleted !", {
+                                      position: toast.POSITION.TOP_RIGHT, pauseOnFocusLoss: false
+                                    });
+                                  }}
                                 />
                               )}
                               {values.term.length <= 1 ? (
@@ -304,6 +322,9 @@ function CreateFlashCard() {
                             termName: "",
                             termDefinition: "",
                             termImage: "",
+                          });
+                          toast.info("Term Card Added !", {
+                            position: toast.POSITION.TOP_RIGHT, pauseOnFocusLoss: false
                           });
                         }}
                       >

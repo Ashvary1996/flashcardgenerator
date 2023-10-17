@@ -17,6 +17,7 @@ function FlashCardDetails() {
   const [showModal, setShowModal] = useState(false);
 
   // if (!flashcardData) { return <div>No data available.</div> }
+
   const nextCard = () => { if (flashcardData.term.length - 1 !== term) { setTerm(term + 1) } };
   const prevCard = () => { if (term !== 0) { setTerm(term - 1) } };
   

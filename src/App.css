@@ -141,11 +141,10 @@ label {
   flex-direction: column;
   text-align: left;
   padding-left: 25px;
- 
+
 }
 
 .termsDiv {
-
   padding: 5px;
   /* border: 2px solid red; */
   display: flex;

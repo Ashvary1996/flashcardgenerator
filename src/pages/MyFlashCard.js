@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { GiCrossMark } from "react-icons/gi";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import DeleteModal from "../components/DeleteModal";
 
 function MyFlashCard() {
   const [dataS, setDataS] = useState(localStorage.getItem("flashcards")
@@ -27,13 +29,18 @@ function MyFlashCard() {
       setDataS(newData);
       localStorage.setItem("flashcards", JSON.stringify(newData));
       console.log("deleted Successfully.");
+      toast.error(delClickedItem.groupName + " Flashcard Deleted ", { theme: "colored", icon: false, pauseOnFocusLoss: false })
     } else {
       console.log("deleting canceled.");
     }
   };
 
+  console.log("dataS", dataS);
   return (
+
     <div className="myFlashcardDiv w-[78%] m-auto ">
+      <DeleteModal />
+      <ToastContainer />
       <div className="  text-right pr-10 text-sm absolute right-24   text-gray-500 font-bold ">Total FlashCards : {dataS.length}</div>
       <div className="displayFlashcardDiv " >
         {dataS ? dataS.slice(0, showCard).map((elem, index) => (
@@ -53,7 +60,7 @@ function MyFlashCard() {
         ))
           : <>
             <div className="text-7xl text-red-800 mt-32"> "No data available"</div>
-            <p className="text-xl mt-5">Please go to <i className="text-blue-500 underline hover:text-teal-600"><Link to="/createflashcard" >Create New FlashCard</Link></i></p>
+            <p className="text-xl mt-5">Please go and <i className="text-blue-500 underline hover:text-teal-600"><Link to="/createflashcard" >Create New FlashCard</Link></i></p>
           </>}
 
         {/* See all and See less Button if we have more than 6 FlashCard */}
@@ -73,7 +80,9 @@ function MyFlashCard() {
                 )}
             </div>
           </div>
-        ) : null}</div>
+        ) : null}
+
+      </div>
 
     </div>
   );
