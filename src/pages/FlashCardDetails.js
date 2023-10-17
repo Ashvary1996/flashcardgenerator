@@ -21,7 +21,7 @@ function FlashCardDetails() {
     <>
       <Modal showModal={showModal} setShowModal={setShowModal} />
       {flashcardData ? (
-        <div className="flashcardDetailsPAge m-auto mx-[10%]  ">
+        <div className="flashcardDetailsPAge m-auto mx-[10%]  mt-5 ">
           <div className="flex pt-1 m-auto flew-row">
             <div >
               {<Link to="/myflashcard"><BsArrowLeft className="text-2xl cursor-pointer hover:text-red-600  " /></Link>}
@@ -65,11 +65,11 @@ function FlashCardDetails() {
               <button
                 className="rounded-md commonBorder shareBtns"
                 onClick={() => { setShowModal(true) }}>
-                {<RiArrowGoForwardLine className="ico" />}Share
+                {<RiArrowGoForwardLine className="shareIcons" />}Share
               </button>
-              <button className="commonBorder shareBtns ">{<TbDownload className="ico" />} Download</button>
+              <button className="commonBorder shareBtns ">{<TbDownload className="shareIcons" />} Download</button>
               <button className="commonBorder shareBtns " onClick={() => window.print()}>
-                {<LiaPrintSolid className="ico" />} Print
+                {<LiaPrintSolid className="shareIcons" />} Print
               </button>
             </div>
           </div>
@@ -80,12 +80,12 @@ function FlashCardDetails() {
           <div className="cursolBtn flex justify-center items-center">
             <MdNavigateBefore
               className="text-5xl cursor-pointer dark:text-gray-400 hover:text-red-500 "
-              onClick={prevCard}/>
+              onClick={prevCard} />
             <span className="ml-10">{term + 1}/</span>
             <span className="mr-10">{flashcardData.term.length}</span>
             <MdNavigateNext
               className="text-5xl cursor-pointer dark:text-gray-400 hover:text-red-500 "
-              onClick={nextCard}/>
+              onClick={nextCard} />
           </div>
         </div>
       ) : (

@@ -4,9 +4,11 @@ import logo from "../assets/logo.png";
 import { GiCrossMark } from "react-icons/gi";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import DeleteModal from "../components/DeleteModal";
+import DeleteModal from "../components/DeleteModal";
 
 function MyFlashCard() {
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteCard, setDeleteCard] = useState(false);
   const [flashCardData, setFlashCardData] = useState(localStorage.getItem("flashcards")
     ? JSON.parse(localStorage.getItem("flashcards"))
     : []
@@ -18,8 +20,11 @@ function MyFlashCard() {
     navigate("/flashCardDetails", { state: elem });
   };
 
-  const del = (delClickedItem) => {
-    if (window.confirm("Are You Sure you want to delete This Flashcard !") === true) {
+  const deleteFlashCard = (delClickedItem) => {
+    setShowDeleteModal(true);
+    if (deleteCard === true) {
+
+      console.log(deleteCard);
       let newData = [...flashCardData]
       newData = flashCardData.filter((elem) => {
         return elem !== delClickedItem;
@@ -27,21 +32,24 @@ function MyFlashCard() {
       setFlashCardData(newData);
       localStorage.setItem("flashcards", JSON.stringify(newData));
       toast.error(delClickedItem.groupName + " Flashcard Deleted ", { theme: "colored", icon: false, pauseOnFocusLoss: false })
-    } else {
-      console.log("Not Deleted.");
+    }
+    else {
+      setDeleteCard(false);
+
     }
   };
   return (
     <>
-      <div className="myFlashcardDiv w-[78%] m-auto ">
-        {/* <DeleteModal /> */}
+      <div className="myFlashcardDiv w-[78%] m-auto mt-3 ">
+        <DeleteModal showDeleteModal={showDeleteModal} setShowDeleteModal={setShowDeleteModal} deleteCard={deleteCard} setDeleteCard={setDeleteCard} />
         <ToastContainer />
-        <div className="  text-right pr-10 text-sm absolute right-24   text-gray-500 font-bold ">Total FlashCards : {flashCardData.length}</div>
-        <div className="displayFlashcardDiv " >
+        <div className=" text-right pr-10 text-sm absolute right-24   text-gray-500 font-bold ">Total FlashCards : {flashCardData.length}</div>
+        <div name="displayFlashcardDiv"
+          className=" flex flex-wrap m-auto overflow-hidden  " >
           {flashCardData.length !== 0 ? flashCardData.slice(0, showCard).map((elem, index) => (
-            <div key={index} className="childCards ">
-              <button className="del absolute text-gray-500 -right-3 -top-5 hidden  text-3xl hover:text-4xl hover:text-red-600 " onClick={() => del(elem, index)}><GiCrossMark /></button>
-              <img className="border-2 bg-slate-400  w-16 h-16 m-auto rounded-full absolute -top-12 left-[39.3%] mb-10"
+            <div key={index} name="childCards" className="childCards flex flex-col m-auto bg-white w-[300px] h-[200px] p-[8px] rounded mt-[50px] relative mb-[10px] ">
+              <button className="del absolute text-gray-500 -right-3 -top-5 hidden  text-3xl hover:text-4xl hover:text-red-600 " onClick={() => { deleteFlashCard(elem, index) }}><GiCrossMark /></button>
+              <img className="border-2 bg-slate-400  w-[70px] h-[70px] m-auto rounded-full absolute -top-12 left-[39.3%] mb-10"
                 src={elem.groupImage ? elem.groupImage : logo} />
               <h1 className="font-bold  mt-4 ">{elem.groupName}</h1>
               <h2 className="text-gray-700 h-10 mt-1">

@@ -10,49 +10,21 @@ body::-webkit-scrollbar {
   width: 0px;
 }
 
-
-
-
 .ddes::-webkit-scrollbar {
   background-color: transparent;
   width: 5px;
-
 }
 
 .ddes::-webkit-scrollbar-thumb {
   background-color: rgba(255, 0, 0, 0.772);
   border-radius: 20px;
-
 }
 
+/* ............................................ */
 
-.logoDiv {
-  width: 100%;
-  /* height: 40px; */
-  /* border: 2px solid red; */
-  background-color: white;
-  padding: 10px;
-  position: sticky;
-  top: 0px;
-  z-index: 1
+.navlinks {
+  padding-bottom: 8px;
 }
-
-.logoDiv>img {
-  height: 35px;
-  /* border: 2px solid red; */
-}
-
-.navbarDiv {
-  margin: auto;
-  margin-top: 5px;
-  /* font-size: large; */
-  /* border: 2px solid red; */
-  width: 80%;
-  margin-bottom: 1rem;
-  padding: 10px;
-
-}
-
 
 .navlinks:hover {
   color: red;
@@ -62,47 +34,15 @@ body::-webkit-scrollbar {
   transition: color 1s;
 }
 
-.navlinks {
-  padding-bottom: 8px;
-}
-
 .navlinks:active {
   color: red;
   transition: none;
 }
 
 /* ............................................. */
-.createFlashcardDiv {
-  /* border: 2px solid red; */
-  /* background-color: white; */
-  width: 78%;
-  margin: auto;
-  margin-top: 2rem;
-  /* margin-bottom: 2rem; */
-  /* padding: 25px; */
-  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
-  /* border-radius: 4px; */
-  display: flex;
-  flex-direction: column;
-  /* text-align: left; */
-  /* padding-left: 25px; */
-}
 
 .createGroupDiv {
-  /* border: 2px solid red; */
-  background-color: white;
-  width: 100%;
-  height: 30%;
-  /* margin: auto; */
-  /* margin-top: 2rem; */
-  /* margin-bottom: 2rem; */
-  padding: 15px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  padding-left: 25px;
 }
 
 .error {
@@ -115,7 +55,6 @@ textarea {
   border-radius: 4px;
   padding: 3px;
   padding-left: 10px;
-
 }
 
 label {
@@ -126,76 +65,15 @@ label {
   margin-bottom: 4px;
 }
 
+/* .................................................  */
+
 .createTermCardDiv {
-  /* border: 2px solid red; */
-  background-color: white;
-  width: 100%;
-  /* height: 30%; */
-  /* margin: auto; */
-  margin-top: 1rem;
-  /* margin-bottom: 2rem; */
-  /* padding: 15px; */
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  padding-left: 25px;
-
 }
 
-.termsDiv {
-  padding: 5px;
-  /* border: 2px solid red; */
-  display: flex;
-  flex-direction: row;
-  column-gap: 20px;
-  /* margin-top: 20px; */
-  margin-bottom: 10px;
-}
-
-.groupImgDelIcon {
-  margin-top: 10px;
-  margin-left: -20px;
-  text-align: left;
-  color: rgb(156, 153, 150);
-}
-
-.groupImgDelIcon:hover {
-  color: red;
-  font-size: xx-large;
-  cursor: pointer;
-
-}
-
-/* ////////////////////////   2nd Page MyFlashCard //////////////////////////// */
-.displayFlashcardDiv {
-  /* border: 2px solid red; */
-  display: flex;
-  flex-wrap: wrap;
-  margin: auto;
-  overflow: hidden;
-  /* margin-top: 2rem; */
-  /* margin-bottom: 2rem; */
-  /* gap: 10px; */
-
-}
-
+/* ////////////////////////   2nd Page=> MyFlashCard //////////////////////////// */
 .childCards {
-  /* border: 2px solid red; */
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  /* font-size: 15px; */
-  background-color: white;
-  width: 300px;
-  height: 200px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  padding: 8px;
-  border-radius: 5px;
-  margin-top: 52px;
-  position: relative;
-  margin-bottom: 10px;
 }
 
 .childCards:hover>.del {
@@ -204,7 +82,7 @@ label {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
 
-/* /////////////FlashCardDetails Page /////////////// */
+/* /////////////       3rd Page => FlashCardDetails Page /////////////// */
 .commonBorder {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 5px;
@@ -234,11 +112,12 @@ label {
   color: white;
 }
 
-.ico {
+.shareIcons {
   font-size: larger;
   margin: 0px 10px;
 }
 
+/* ..................................................................... */
 .modalDiv {
   z-index: 9;
   background: #363736be;
@@ -250,6 +129,9 @@ label {
   opacity: 100;
 }
 
+/* ..................................................................... */
+
+/* CSS FOR RESPONSIVENESS STARTED */
 
 @media screen and (max-width: 800px) {
   body {
@@ -273,13 +155,8 @@ label {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    /* margin-bottom: 10px; */
-    /* gap: 10px; */
   }
 
-
-
-  /*  */
   .displayTermBox {
     width: 100%;
     height: 500px;
@@ -311,14 +188,12 @@ label {
     /* border: 2px solid red; */
     margin: auto;
     font-size: x-small;
-
   }
 
   .shareBtnsDiv {
-
     display: flex;
     flex-direction: row;
     width: 100%;
-    /* border: 2px solid red; */
+
   }
 }

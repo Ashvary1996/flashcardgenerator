@@ -10,7 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 
 function CreateFlashCard() {
- 
+
   const SUPPORTED_FORMATS = ["image/jpeg", "image/jpg", "image/png"];
   const formData = useSelector((state) => state.flashcard.formData); // Access form data from Redux store
   const [flashCardData, setFlashCardData] = useState(localStorage.getItem("flashcards")
@@ -28,9 +28,9 @@ function CreateFlashCard() {
       position: toast.POSITION.TOP_RIGHT, pauseOnFocusLoss: false
     });
   }
- 
+
   return (
-    <div className="createFlashcardDiv  md:mt-10 ">
+    <div className="w-[78%] m-auto mt-2 flex flex-col md:mt-10 " name="createFlashcardDiv">
       <ToastContainer />
       <Formik
         initialValues={formData} // Use formData from Redux store
@@ -41,12 +41,12 @@ function CreateFlashCard() {
           console.log("FlashCard Created Successfully", flashCardData);
           toast.success("FlashCard Created Successfully", { theme: "colored", position: toast.POSITION.TOP_CENTER, pauseOnFocusLoss: false })
           resetForm({ values: "" });
-     
-        }}  
-      > 
+
+        }}
+      >
         {({ values, handleChange, handleBlur, setFieldValue }) => (
           <Form>
-            <div className=" createGroupDiv">
+            <div className="bg-white w-[100%] h-[30%] p-[15px] flex flex-col text-left pl-[25px] rounded" name="createGroupDiv">
               <div className="flex flex-col md:flex-row "  >
                 <div className="flex flex-col">
                   <label htmlFor="groupName"> Create Group*</label>
@@ -66,12 +66,14 @@ function CreateFlashCard() {
                   {values.groupImage ? (
                     <div className="flex ">
                       <img
-                        className="h-32 mx-2 text-center rounded-full w-32 mt- "
+                        className="h-28 w-28 mx-7 text-center rounded-full  "
                         src={values.groupImage}
                         alt=""
                       />
+
                       <GiCrossMark
-                        className="groupImgDelIcon"
+                        name="groupImgDelIcon"
+                        className="mt-[10px] -ml-[20px] text-gray-400 hover:text-red-600 hover:text-xl hover:cursor-pointer "
                         onClick={() => setFieldValue("groupImage", null)}
                       />
                     </div>
@@ -91,7 +93,7 @@ function CreateFlashCard() {
                   </ErrorMessage>
                   {/* Image upload */}
                   <input
-                    className="hidden"
+                    className="hidden "
                     name="groupImage"
                     id="groupImage"
                     type="file"
@@ -134,13 +136,15 @@ function CreateFlashCard() {
             </div>
 
             {/* Term Div */}
-            <div className="createTermCardDiv">
+            <div className=" w-[100%] mt-3 pt-1 bg-white rounded flex flex-col text-left pl-[25px] " name='createTermCardDiv'>
               <FieldArray
                 name="term"
                 render={(moreTerm) => (
-                  <div className="overflow-hidden bg-white rounded-md flex-col">
+                  <div className="overflow-hidden bg-white rounded-md flex-col"  >
                     {values.term && values.term.map((term, index) => (
-                      <div className="relative flex-wrap termsDiv w-full md:flex flex-row md:space-x-4 md:items-center border-gray-400" key={index}>
+                      <div name="termsDiv"
+                        className="mt-2 relative flex-wrap  w-full md:flex flex-row md:space-x-4 md:items-center border-gray-400"
+                        key={index}>
                         <div className="w-8 h-8 px-2 text-xl text-center text-white bg-red-500 rounded-full  ">
                           {index + 1}
                         </div>
@@ -150,6 +154,7 @@ function CreateFlashCard() {
                             Enter Term*
                           </label>
                           <Field
+
                             className="p-2 text-sm text-gray-900 border rounded-md w-50 border-gray-400 md:w-72 bg-gray-50"
                             name={`term.${index}.termName`}
                             id={`term.${index}.termName`}
@@ -189,7 +194,7 @@ function CreateFlashCard() {
                           {term.termImage ? (
                             <div className=" flex">
                               <img
-                                className="h-20 w-20 p-1 rounded "
+                                className="h-20 w-20 p-1 rounded-lg"
                                 src={term.termImage}
                                 alt=""
                               />
@@ -203,7 +208,7 @@ function CreateFlashCard() {
                           ) : (
                             <label
                               htmlFor={`term.${index}.termImage`}
-                              className="w-44 h-[44px] cursor-pointer px-3 mx-3 mt-7 py-1  flex  items-center justify-center  rounded"
+                              className="w-44 h-[44px] cursor-pointer px-3 mx-3 mt-7 py-1  flex  items-center justify-center rounded"
                             >
                               <span className="flex w-32 p-2 mx-auto  font-bold text-blue-700 transition-all ease-in-out border border-blue-700 rounded-lg shadow-md hover:-translate-y-px hover:bg-blue-700 hover:text-white ">
                                 Select Image
@@ -280,6 +285,7 @@ function CreateFlashCard() {
                     ))}
 
                     <div
+
                       className="inline-block mt-4 mb-6 mx-7 font-bold text-blue-700 cursor-pointer"
                       onClick={() => addMoreTermS(values, moreTerm)}
                     >
