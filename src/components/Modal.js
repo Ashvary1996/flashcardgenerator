@@ -5,7 +5,7 @@ function Modal(props) {
   //   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div  >
+    <div>
       {/* <!-- CONTAINER MODAL--> */}
       {props.showModal ? (
         <>
