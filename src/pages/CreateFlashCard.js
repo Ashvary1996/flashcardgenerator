@@ -19,7 +19,7 @@ function CreateFlashCard() {
   );
 
   const addMoreTermS = (values, moreTerm) => {
-    moreTerm.insert(values.term + 1, {
+    moreTerm.insert(values.term.length + 1, {
       termName: "",
       termDefinition: "",
       termImage: "",
@@ -30,12 +30,8 @@ function CreateFlashCard() {
   }
 
   return (
-<<<<<<< HEAD
-    <div className="createFlashcardDiv md:mt-10 ">
-=======
     <div className="w-[78%] m-auto mt-2 flex flex-col md:mt-10 " name="createFlashcardDiv">
       <ToastContainer />
->>>>>>> ef5bfe0eefe0bd295bd7ae0623e317c39634fcde
       <Formik
         initialValues={formData} // Use formData from Redux store
         validationSchema={validationSchema}
@@ -49,101 +45,11 @@ function CreateFlashCard() {
         }}
       >
         {({ values, handleChange, handleBlur, setFieldValue }) => (
-<<<<<<< HEAD
-          <>
-            <Form>
-              <div className=" createGroupDiv">
-                <div className="flex flex-col md:flex-row "  >
-                  <div className="flex flex-col">
-                    {/* Group Name */}
-                    <label htmlFor="groupName"> Create Group*</label>
-                    <Field
-                      name="groupName"
-                      id="groupName"
-                      type="text"
-                      placeholder="Group Name"
-                      className="w-full md:w-96"
-                    ></Field>
-                    <ErrorMessage name="groupName">
-                      {(emsg) => <div className="error ">{emsg}</div>}
-                    </ErrorMessage>
-                  </div>
-                  {/* Group Image Div */}
-                  <div>
-                    {/* Group Image */}
-                    {values.groupImage ? (
-                      <div className="flex ">
-                        <img
-                          className="w-32 h-32 mx-2 text-center rounded-full mt- "
-                          src={values.groupImage}
-                          alt=""
-                        />
-                        <GiCrossMark
-                          className="groupImgDelIcon"
-                          onClick={() => setFieldValue("groupImage", null)}
-                        />
-                      </div>
-                    ) : (
-                      <label
-                        htmlFor="groupImage"
-                        className="order w-40 h-[3px]  cursor-pointer px-2  mx-3 my-3 mt-[24px] p-4  border border-gray-400 flex  items-center justify-center rounded text-sm "
-                      >
-                        <MdOutlineUploadFile className=" text-[2em] text-blue-700" />
-                        <span className="font-bold text-blue-700 ">
-                          Upload Image
-                        </span>
-                      </label>
-                    )}
-                    <ErrorMessage name="groupImage">
-                      {(emsg) => <div className="error ">{emsg}</div>}
-                    </ErrorMessage>
-                    {/* Image upload */}
-                    <input
-                      onChange={(event) => {
-                        // Validation on image
-                        if (
-                          event.target.files[0] &&
-                          !SUPPORTED_FORMATS.includes(
-                            event.target.files[0].type
-                          )
-                        ) {
-                          alert("unsupported file format");
-                        } else if (
-                          event.target.files[0].size >
-                          1024 * 1024 * 10
-                        ) {
-                          alert("image size is very large");
-                        } else if (
-                          event.target.files[0].size <=
-                          1024 * 1024 * 10
-                        ) {
-                          const file = event.target.files[0];
-                          const reader = new FileReader();
-                          reader.readAsDataURL(file);
-                          reader.onload = () => {
-                            setFieldValue("groupImage", reader.result);
-                          };
-                        }
-                      }
-                      }
-                      className="hidden"
-                      name="groupImage"
-                      id="groupImage"
-                      type="file"
-                    />
-                  </div>
-                  {/* Group Image Div Ended */}
-                </div>
-                <div className="flex flex-col" name="groupDescriptionDiv">
-                  {/* Group Description */}
-                  <label htmlFor="groupDescription"> Add description</label>
-=======
           <Form>
             <div className="bg-white w-[100%] h-[30%] p-[15px] flex flex-col text-left pl-[25px] rounded" name="createGroupDiv">
               <div className="flex flex-col md:flex-row "  >
                 <div className="flex flex-col">
                   <label htmlFor="groupName"> Create Group*</label>
->>>>>>> ef5bfe0eefe0bd295bd7ae0623e317c39634fcde
                   <Field
                     name="groupName"
                     id="groupName"
@@ -191,7 +97,9 @@ function CreateFlashCard() {
                     name="groupImage"
                     id="groupImage"
                     type="file"
+                    onClick={(event)=>event.target.value=null} //selecting same image 
                     onChange={(event) => {
+                      event.preventDefault()
                       // Validation on image
                       if (event.target.files[0] && !SUPPORTED_FORMATS.includes(event.target.files[0].type)) {
                         toast.warning("Please use Image Format !", { pauseOnFocusLoss: false });
@@ -229,75 +137,6 @@ function CreateFlashCard() {
               </div>
             </div>
 
-<<<<<<< HEAD
-              {/* Term Div */}
-              <div className="createTermCardDiv">
-                <FieldArray
-                  name="term"
-                  render={(moreTerm) => (
-                    <div className="p-5 mt-4 overflow-hidden bg-white rounded-md ">
-                      {values.term && values.term.map((term, index) => (
-                        <div className="relative flex-wrap border-gray-400 md:flex md:space-x-10 md:items-center termsDiv" key={index}>
-                          <div className="w-8 h-8 px-2 text-xl text-center text-white bg-red-500 rounded-full lg:flex ">
-                            {index + 1}
-                        
-                          </div>
-                          <div className="flex flex-col ">
-                            {/* Term Name */}
-                            <label htmlFor={`term.${index}.termName`}>
-                              Enter Term*
-                            </label>
-                            <Field
-                              className="w-full p-2 text-sm text-gray-900 border border-gray-400 rounded-md lg:w-96 md:w-72 bg-gray-50"
-                              name={`term.${index}.termName`}
-                              id={`term.${index}.termName`}
-                              value={term.termName}
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              type="text"
-                              placeholder="Term Name"
-                            ></Field>
-                            <ErrorMessage name={`term.${index}.termName`}>
-                              {(emsg) => <div className="error ">{emsg}</div>}
-                            </ErrorMessage>
-                          </div>
-                          {/* Term Definition */}
-                          <div className="flex flex-col">
-                            <label htmlFor={`term.${index}.termDefinition`}>
-                              Enter Definition*
-                            </label>
-                            <Field
-                              as="textarea"
-                              className="w-full h-10 p-2 text-sm text-gray-700 transition-all duration-500 border border-gray-400 rounded-md resize-none focus:h-24 lg:w-96 md:w-72 bg-gray-50 "
-                              name={`term.${index}.termDefinition`}
-                              id={`term.${index}.termDefinition`}
-                              value={term.termDefinition}
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              type="text"
-                              placeholder="Term Definition"
-                            ></Field>
-                            <ErrorMessage name={`term.${index}.termDefinition`}>
-                              {(emsg) => <div className="error ">{emsg}</div>}
-                            </ErrorMessage>
-                          </div>
-                          {/* Term Image Div Started */}
-                          <div className="flex">
-                            {/* Term Image */}
-                            {term.termImage ? (
-                              <div className="flex ">
-                                <img
-                                  className="w-20 h-20 p-1 rounded "
-                                  src={term.termImage}
-                                  alt=""
-                                />
-                                <GiCrossMark
-                                  className="mr-5 text-lg hover:text-red-600 "
-                                  onClick={() =>
-                                    setFieldValue(`term.${index}.termImage`, "")
-                                  }
-                                />
-=======
             {/* Term Div */}
             <div className=" w-[100%] mt-3 pt-1 bg-white rounded flex flex-col text-left pl-[25px] " name='createTermCardDiv'>
               <FieldArray
@@ -317,7 +156,6 @@ function CreateFlashCard() {
                             Enter Term*
                           </label>
                           <Field
->>>>>>> ef5bfe0eefe0bd295bd7ae0623e317c39634fcde
 
                             className="p-2 text-sm text-gray-900 border rounded-md w-50 border-gray-400 md:w-72 bg-gray-50"
                             name={`term.${index}.termName`}
@@ -386,7 +224,9 @@ function CreateFlashCard() {
                           />
                           {/* Input field for image upload */}
                           <input
+                           onClick={(event)=>event.target.value=null} //selecting same image
                             onChange={(event) => {
+                              event.preventDefault()
                               // Validation on image
                               if (
                                 event.target.files[0] &&
@@ -425,19 +265,10 @@ function CreateFlashCard() {
                             {values.term.length <= 1 ? (
                               null
                             ) : (
-<<<<<<< HEAD
-                              <label
-                                htmlFor={`term.${index}.termImage`}
-                                className="w-44 h-[44px] cursor-pointer px-3 mx-3 mt-7 py-1  flex  items-center justify-center  rounded"
-                              >
-                                <span className="flex w-32 p-2 mx-auto font-bold text-blue-700 transition-all ease-in-out border border-blue-700 rounded-lg shadow-md hover:-translate-y-px hover:bg-blue-700 hover:text-white ">
-                                  Select Image
-                                </span>
-=======
                               <RiDeleteBin6Line
                                 className="text-[1.8em]  text-gray-500 m-2 cursor-pointer hover:text-red-600"
                                 onClick={() => {
-                                  moreTerm.remove(index), toast.warn("Term Card Deleted !", {
+                                  moreTerm.remove(index);toast.warn("Term Card Deleted !", {
                                     position: toast.POSITION.TOP_RIGHT, pauseOnFocusLoss: false
                                   });
                                 }}
@@ -450,27 +281,10 @@ function CreateFlashCard() {
                                 <BiEdit
                                   className="text-[1.8em] text-gray-500 m-2 cursor-pointer hover:text-yellow-600"
                                 />
->>>>>>> ef5bfe0eefe0bd295bd7ae0623e317c39634fcde
                               </label>
                             )}
                           </div>
                         </div>
-<<<<<<< HEAD
-                      ))}
-
-                      <div
-                        className="inline-block mt-4 mb-6 font-bold text-blue-700 cursor-pointer mx-7"
-                        onClick={() => {
-                          moreTerm.insert(values.term + 1, {
-                            termName: "",
-                            termDefinition: "",
-                            termImage: "",
-                          });
-                        }}
-                      >
-                        + Add More
-=======
->>>>>>> ef5bfe0eefe0bd295bd7ae0623e317c39634fcde
                       </div>
                     ))}
 
@@ -481,21 +295,6 @@ function CreateFlashCard() {
                     >
                       + Add More
                     </div>
-<<<<<<< HEAD
-                  )}
-                ></FieldArray>
-              </div>
-              <div className="relative pt-20">
-                <button
-                  type="submit"
-                  className="absolute left-0 right-0 w-40 px-6 py-2 mx-auto mt-10 text-lg font-bold text-white transition-all ease-in-out bg-red-500 border-red-500 rounded-lg shadow-lg bottom-1 hover:bg-red-600 hover:text-white hover:-translate-y-1 "
-                >
-                  Create
-                </button>
-              </div>
-            </Form>
-          </>
-=======
                   </div>
                 )}
               ></FieldArray>
@@ -510,7 +309,6 @@ function CreateFlashCard() {
             </div>
           </Form>
 
->>>>>>> ef5bfe0eefe0bd295bd7ae0623e317c39634fcde
         )}
       </Formik>
     </div>
@@ -518,4 +316,3 @@ function CreateFlashCard() {
 }
 
 export default CreateFlashCard;
-

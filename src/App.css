@@ -69,55 +69,7 @@ label {
 
 .createTermCardDiv {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-<<<<<<< HEAD
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  padding-left: 25px;
- 
 }
-/* 
-.termsDiv {
-
-  padding: 5px; */
-  /* border: 2px solid red; */
-  /* display: flex;
-  flex-direction: row;
-  column-gap: 20px; */
-  /* margin-top: 20px; */
-  /* margin-bottom: 10px;
-} */
-
-.groupImgDelIcon {
-  margin-top: 10px;
-  margin-left: -20px;
-  text-align: left;
-  color: rgb(156, 153, 150);
-}
-
-.groupImgDelIcon:hover {
-  color: red;
-  font-size: xx-large;
-  cursor: pointer;
-
-}
-
-/* ////////////////////////   2nd Page MyFlashCard //////////////////////////// */
-/* .displayFlashcardDiv { */
-  /* border: 2px solid red; */
-  /* display: flex;
-  flex-wrap: wrap;
-  margin: auto;
-  overflow: hidden; */
-  /* margin-top: 2rem; */
-  /* margin-bottom: 2rem; */
-  /* gap: 10px; */
-
-/* } */
-=======
-}
->>>>>>> ef5bfe0eefe0bd295bd7ae0623e317c39634fcde
 
 /* ////////////////////////   2nd Page=> MyFlashCard //////////////////////////// */
 .childCards {
