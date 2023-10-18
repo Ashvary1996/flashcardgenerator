@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { GiCrossMark } from "react-icons/gi";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DeleteModal from "../components/DeleteModal";
 
 function MyFlashCard() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [deleteCard,setDeleteCard] = useState(false);
   const [flashCardData, setFlashCardData] = useState(localStorage.getItem("flashcards")
     ? JSON.parse(localStorage.getItem("flashcards"))
     : []
   );
+
+  const [delClickedItem, setDelClickedItem] = useState(null);
 
   const navigate = useNavigate();
   const [showCard, setShowCard] = useState(6);
@@ -21,27 +22,20 @@ function MyFlashCard() {
   };
 
   const deleteFlashCard = (delClickedItem) => {
+    setDelClickedItem(delClickedItem);
     setShowDeleteModal(true);
-    if (deleteCard === true) {
-
-      console.log(deleteCard);
-      let newData = [...flashCardData]
-      newData = flashCardData.filter((elem) => {
-        return elem !== delClickedItem;
-      })
-      setFlashCardData(newData);
-      localStorage.setItem("flashcards", JSON.stringify(newData));
-      toast.error(delClickedItem.groupName + " Flashcard Deleted ", { theme: "colored", icon: false, pauseOnFocusLoss: false })
-    }
-    else {
-      setDeleteCard(false);
-
-    }
   };
+
   return (
     <>
       <div className="myFlashcardDiv w-[78%] m-auto mt-3 ">
-        <DeleteModal showDeleteModal={showDeleteModal} setShowDeleteModal={setShowDeleteModal} deleteCard={deleteCard} setDeleteCard={setDeleteCard} />
+        <DeleteModal 
+        showDeleteModal={showDeleteModal} 
+        setShowDeleteModal={setShowDeleteModal} 
+        flashCardData={flashCardData}
+        setFlashCardData={setFlashCardData}
+        delClickedItem={delClickedItem} // Pass the clicked item to the modal 
+         />
         <ToastContainer />
         <div className=" text-right pr-10 text-sm absolute right-24   text-gray-500 font-bold ">Total FlashCards : {flashCardData.length}</div>
         <div name="displayFlashcardDiv"
