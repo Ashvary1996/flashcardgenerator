@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Field, Formik, FieldArray, ErrorMessage } from "formik";
 import validationSchema from "../components/ValidatioSchema";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { addFlashCard } from "../redux/flashcardSlice";
 import { MdOutlineUploadFile } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { BiEdit } from "react-icons/bi";
@@ -10,13 +11,10 @@ import { ToastContainer, toast } from "react-toastify";
 
 function CreateFlashCard() {
   const imageType = ["image/jpeg", "image/jpg", "image/png"];
+  const dispatch = useDispatch();
   const formData = useSelector((state) => state.flashcard.formData); // Access form data from Redux store
 
-  const [flashCardData, setFlashCardData] = useState(
-    localStorage.getItem("flashcards")
-      ? JSON.parse(localStorage.getItem("flashcards"))
-      : []
-  );
+  
 
   const addMoreTermS = (values, moreTerm) => {
     moreTerm.insert(values.term.length + 1, {
@@ -40,9 +38,8 @@ function CreateFlashCard() {
         initialValues={formData} // Use formData from Redux store
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
-          flashCardData.push(values);
-          localStorage.setItem("flashcards", JSON.stringify(flashCardData));
-          console.log("FlashCard Created Successfully", flashCardData);
+          dispatch(addFlashCard(values));
+          //console.log("FlashCard Created Successfully", flashCardData);
           toast.success("FlashCard Created Successfully", {
             theme: "colored",
             position: toast.POSITION.TOP_CENTER,

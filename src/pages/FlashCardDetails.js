@@ -16,11 +16,13 @@ import { MdNavigateNext } from "react-icons/md";
 import { useLocation } from "react-router-dom";
 import Modal from "../components/Modal";
 import noFLashcard from "../assets/noFLashcard.jpeg";
-import PdfDownload from "../components/PdfDownload"
+import PdfDownload from "../components/PdfDownload";
+
 
 function FlashCardDetails() {
   const location = useLocation();
   const flashcardData = location.state;
+  // const { terms } = useParams();
   const [term, setTerm] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const nextCard = () => {
@@ -33,6 +35,7 @@ function FlashCardDetails() {
       setTerm(term - 1);
     }
   };
+  
 
   return (
     <>
