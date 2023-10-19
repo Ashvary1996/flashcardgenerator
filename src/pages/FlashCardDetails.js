@@ -16,6 +16,7 @@ import { MdNavigateNext } from "react-icons/md";
 import { useLocation } from "react-router-dom";
 import Modal from "../components/Modal";
 import noFLashcard from "../assets/noFLashcard.jpeg";
+import PdfDownload from "../components/PdfDownload"
 
 function FlashCardDetails() {
   const location = useLocation();
@@ -116,7 +117,12 @@ function FlashCardDetails() {
               </button>
               {/* flashCard download function */}
               <button className="commonBorder shareBtns ">
-                {<TbDownload className="shareIcons" />} Download
+                {<TbDownload className="shareIcons" />} 
+
+                 <PdfDownload
+                 buttonLabel="Download"
+                 flashcardData={flashcardData} // Pdf download component
+                />
               </button>
               {/* flashCard Print button */}
               <button
