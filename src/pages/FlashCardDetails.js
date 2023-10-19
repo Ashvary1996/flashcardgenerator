@@ -15,6 +15,7 @@ import { MdNavigateBefore } from "react-icons/md";
 import { MdNavigateNext } from "react-icons/md";
 import { useLocation } from "react-router-dom";
 import Modal from "../components/Modal";
+import noFLashcard from "../assets/noFLashcard.jpeg";
 
 function FlashCardDetails() {
   const location = useLocation();
@@ -50,7 +51,6 @@ function FlashCardDetails() {
                 {flashcardData.groupName}
               </h1>
               <h1 className="text-gray-500">
-        
                 {flashcardData.groupDescription}
               </h1>
             </div>
@@ -145,18 +145,23 @@ function FlashCardDetails() {
           </div>
         </div>
       ) : (
-        <>
-          <div className="text-7xl text-red-800 mt-32">
-         
-            "No data available"
+        <div className=" w-[100%] h-[80vh] rounded noFlashcard overflow-hidden relative font-bold">
+          <img
+            className="absolute w-[100%] h-[100%]  "
+            src={noFLashcard}
+            alt=""
+          />
+          <div className="text-7xl text-red-800 mt-32  backdrop-blur-sm">
+            "No Flashcard available"
           </div>
-          <p className="text-xl mt-5">
-            Please go to 
-            <i className="text-blue-500 underline hover:text-teal-600">
-              <Link to="/createflashcard">Create New FlashCard</Link>
+          <br />
+          <p className="text-xl mt-5  backdrop-blur-sm">
+            Please go and
+            <i className=" text-amber-950 underline hover:text-teal-700  ">
+              <Link to="/createflashcard"> Create New FlashCard</Link>
             </i>
           </p>
-        </>
+        </div>
       )}
     </>
   );

@@ -1,10 +1,14 @@
 import React from "react";
-import logo from "../assets/logo.png";
 
+import logo from "../assets/logo.png";
 function LogoBar() {
+  const darkMode = () => {
+    console.log("clicked");
+  };
   return (
-    <div name="logoDiv" className=" w-[100%] bg-white  p-[10px] sticky top-0 z-10 ">
-      <img className="h-[35px]" src={logo} alt="AlmaBetterLogo" />
+    <div  name="logoDiv"  className="w-[100%] bg-white p-[10px] sticky top-0 z-10 flex m-auto "  >
+      <img className="h-[35px] text-left" src={logo} alt="AlmaBetterLogo" /> 
+      <button className="text-right  flex-1 mr-10 text-sm" onClick={darkMode}> ☀ Dark Mode </button>  ☾
     </div>
   );
 }
