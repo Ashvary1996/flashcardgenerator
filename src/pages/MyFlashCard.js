@@ -40,7 +40,7 @@ function MyFlashCard() {
         <div className=" text-right pr-10 text-sm absolute right-24   text-gray-500 font-bold ">Total FlashCards : {flashCardData.length}</div>
         <div name="displayFlashcardDiv"
           className=" flex flex-wrap m-auto overflow-hidden  " >
-          {flashCardData.length !== 0 ? flashCardData.slice(0, showCard).map((elem, index) => (
+          {flashCardData.length !== 0 ? flashCardData.slice(0, showCard).reverse().map((elem, index) => (
             <div key={index} name="childCards" className="childCards flex flex-col m-auto bg-white w-[300px] h-[200px] p-[8px] rounded mt-[50px] relative mb-[10px] ">
               <button className="del absolute text-gray-500 -right-3 -top-5 hidden  text-3xl hover:text-4xl hover:text-red-600 " onClick={() => { deleteFlashCard(elem, index) }}><GiCrossMark /></button>
               <img className="border-2 bg-slate-400  w-[70px] h-[70px] m-auto rounded-full absolute -top-12 left-[39.3%] mb-10"

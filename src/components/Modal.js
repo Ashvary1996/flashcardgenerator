@@ -1,34 +1,28 @@
 import React from "react";
-
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 import { BsShare } from "react-icons/bs";
 function Modal(props) {
-  //   const [showModal, setShowModal] = useState(false);
-
   return (
     <div>
-      {/* <!-- CONTAINER MODAL--> */}
+      <ToastContainer />
+      {/* This is Share Modal it will Come up when user click on Share button from flashcard details */}
       {props.showModal ? (
         <>
           <div className="min-h-screen bg-gray-800 flex items-center justify-center modalDiv">
-            {/* <!--MODAL ITEM--> */}
             <div className="bg-white w-full mx-4 p-4 rounded-xl md:w-1/2 lg:w-1/3">
-              {/* <!--MODAL HEADER--> */}
               <div className="flex justify-between items center border-b border-gray-200 py-3">
                 <div className="flex items-center justify-center">
                   <p className="text-xl font-bold text-gray-800">Share</p>
                 </div>
-
                 <div
                   className="bg-gray-300 text-lg hover:bg-red-600 cursor-pointer hover:text-white font-sans text-gray-500 w-8 h-8 flex items-center justify-center rounded-full"
                   onClick={() => props.setShowModal(false)}
-                >
-                  x
+                >x
                 </div>
               </div>
 
-              {/* <!--MODAL BODY--> */}
               <div className="my-4">
-                {/* <!--BOX LINK--> */}
                 <div className="border-2 border-gray-200 flex justify-between items-center mt-4 py-2 px-4 ">
                   <p className="text-sm mr-2">Link: </p>
                   <input
@@ -42,7 +36,7 @@ function Modal(props) {
                       let linkCopy = window.location.href;
                       navigator.clipboard.writeText(linkCopy).then(_ => {
                         console.log(linkCopy)
-                        alert("Link Copied")
+                       toast("Link Copied")
                       })
                     }}
                   >
