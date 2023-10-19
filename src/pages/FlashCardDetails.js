@@ -1,3 +1,10 @@
+/* in this file we are creating a flash card details which is shown when the user clicks on view card on myflashcard page
+in starting of this page we will show group name and group discription before group name we are having back arrow button oncilcing 
+on that we will go one step back using useNavigate. then we are showing cards name and description of card with card image
+then we are having share button download button and print button. when we will click one share button we will
+going to see the share share link and button for coppying link when we click on copy button the link get copy
+notifiction is shown "link copied to clickboard*/
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
@@ -49,7 +56,7 @@ function FlashCardDetails() {
             </div>
           </div>
 
-          {/* //FlashCard Term Componenet whole div bottom white */}
+          {/* //FlashCard Term Component whole div bottom white */}
           <div className="flex flex-row gap-5 midBox ">
             {/* Left Div */}
             <div className="flashcardsDiv commonBorder bg-slate-50 pl-2  w-[20%] text-left overflow-hidden">
@@ -107,9 +114,11 @@ function FlashCardDetails() {
               >
                 {<RiArrowGoForwardLine className="shareIcons" />}Share
               </button>
+              {/* flashCard download function */}
               <button className="commonBorder shareBtns ">
                 {<TbDownload className="shareIcons" />} Download
               </button>
+              {/* flashCard Print button */}
               <button
                 className="commonBorder shareBtns "
                 onClick={() => window.print()}
