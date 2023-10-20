@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar";
 import CreateFlashCard from "./pages/CreateFlashCard";
 import MyFlashCard from "./pages/MyFlashCard";
 import NoPageFound from "./components/NoPageFound";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 // Import Redux related dependencies
 import { Provider } from "react-redux";
@@ -41,9 +41,13 @@ function App() {
               <Route path="/" element={<CreateFlashCard />}>
                 Default Page
               </Route>
-              <Route path="*" element={<NoPageFound />}>
-                Page Not Found
+              <Route path="*" element={<CreateFlashCard />}>
+                Default Page
               </Route>
+              {/* <Route path="*" element={<NoPageFound />}>
+                Page Not Found
+              </Route> */}
+              {/* need ti fix this  */}
             </Routes>
           </Router>
         </Provider>
