@@ -68,7 +68,7 @@ function createPDFForAllTerms(flashcardData) {
   
       // Add term definition
       doc.setFontSize(12);
-      doc.setFont('Times New Roman', 'normal');
+      doc.setFont('Times','Roman');
       doc.setTextColor(102, 0, 0);
       doc.text(termDefinitionLines, 60, yPos + 20);
   

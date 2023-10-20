@@ -116,14 +116,14 @@ function FlashCardDetails() {
                 {<RiArrowGoForwardLine className="shareIcons" />}Share
               </button>
               {/* flashCard download function */}
-              <button className="commonBorder shareBtns ">
+              <div className="commonBorder shareBtns ">
                 {<TbDownload className="shareIcons" />} 
 
                  <PdfDownload
                  buttonLabel="Download"
                  flashcardData={flashcardData} // Pdf download component
                 />
-              </button>
+              </div>
               {/* flashCard Print button */}
               <button
                 className="commonBorder shareBtns "
