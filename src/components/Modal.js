@@ -29,7 +29,7 @@ function Modal(props) {
                   className="copylink pr-2 w-full outline-none bg-transparent"
                   type="text"
                   placeholder="link"
-                  value={window.location.href}
+                  defaultValue={window.location.href}
                 />
                 <button
                   onClick={() => {
