@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import logo from "../assets/logo.png";
+import pokeball from "../assets/pokeball.png";
 import noFLashcard from "../assets/noFLashcard.jpeg";
 import { GiCrossMark } from "react-icons/gi";
 import { ToastContainer } from "react-toastify";
@@ -39,7 +39,7 @@ function MyFlashCard() {
           delClickedItem={delClickedItem} // Pass the clicked item to the modal
         />
         <ToastContainer />
-        <div className=" text-right pr-10 text-sm absolute right-24   text-gray-500 font-bold overflow-visible">
+        <div className="totalCards text-right pr-10 text-sm absolute right-24 text-gray-500 font-bold overflow-visible">
           {!flashCardData.length
             ? null
             : `Total FlashCards :${flashCardData.length}`}
@@ -56,7 +56,7 @@ function MyFlashCard() {
                 <div
                   key={index}
                   name="childCards"
-                  className="childCards flex flex-col m-auto bg-white w-[300px] h-[200px] p-[8px] rounded mt-[50px] relative mb-[10px] "
+                  className="commonBorder flex flex-col m-auto bg-white w-[300px] h-[200px] p-[8px] rounded mt-[50px] relative mb-[10px] "
                 >
                   <button
                     className="del absolute text-gray-500 -right-3 -top-5 hidden  text-3xl hover:text-4xl hover:text-red-600 "
@@ -68,7 +68,7 @@ function MyFlashCard() {
                   </button>
                   <img
                     className="border-2 bg-slate-400  w-[70px] h-[70px] m-auto rounded-full absolute -top-12 left-[39.3%] mb-10"
-                    src={elem.groupImage ? elem.groupImage : logo}
+                    src={elem.groupImage ? elem.groupImage : pokeball}
                     alt=""
                   />
                   <h1 className="font-bold  mt-4 ">{elem.groupName}</h1>

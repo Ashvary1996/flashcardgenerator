@@ -1,4 +1,4 @@
-/* in this file we are creating a flash card details which is shown when the user clicks on view card on myflashcard page
+/* In this file we are creating a flash card details which is shown when the user clicks on view card on myflashcard page
 in starting of this page we will show group name and group discription before group name we are having back arrow button oncilcing 
 on that we will go one step back using useNavigate. then we are showing cards name and description of card with card image
 then we are having share button download button and print button. when we will click one share button we will
@@ -14,15 +14,13 @@ import { LiaPrintSolid } from "react-icons/lia";
 import { MdNavigateBefore } from "react-icons/md";
 import { MdNavigateNext } from "react-icons/md";
 import { useLocation } from "react-router-dom";
-import Modal from "../components/Modal";
+import ShareModal from "../components/ShareModal";
 import noFLashcard from "../assets/noFLashcard.jpeg";
 import PdfDownload from "../components/PdfDownload";
-
 
 function FlashCardDetails() {
   const location = useLocation();
   const flashcardData = location.state;
-  // const { terms } = useParams();
   const [term, setTerm] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const nextCard = () => {
@@ -35,11 +33,10 @@ function FlashCardDetails() {
       setTerm(term - 1);
     }
   };
-  
 
   return (
     <>
-      <Modal showModal={showModal} setShowModal={setShowModal} />
+      <ShareModal showModal={showModal} setShowModal={setShowModal} />
       {flashcardData ? (
         <div className="flashcardDetailsPAge m-auto mx-[10%]  mt-5 ">
           <div className="flex pt-1 m-auto flew-row">
@@ -120,11 +117,11 @@ function FlashCardDetails() {
               </button>
               {/* flashCard download function */}
               <div className="commonBorder shareBtns ">
-                {<TbDownload className="shareIcons" />} 
+                {<TbDownload className="shareIcons" />}
 
-                 <PdfDownload
-                 buttonLabel="Download"
-                 flashcardData={flashcardData} // Pdf download component
+                <PdfDownload
+                  buttonLabel="Download"
+                  flashcardData={flashcardData} // Pdf download component
                 />
               </div>
               {/* flashCard Print button */}
@@ -160,14 +157,15 @@ function FlashCardDetails() {
             src={noFLashcard}
             alt=""
           />
-          <div className="text-7xl text-red-800 mt-32  backdrop-blur-sm">
-            "No Flashcard available"
+          <div className="text-5xl text-red-800 mt-32  backdrop-blur-sm w-[80%] m-auto">
+            "You directly Jump to this Flashcard details page without selecting
+            any card"
           </div>
           <br />
           <p className="text-xl mt-5  backdrop-blur-sm">
-            Please go and
+            Please go and select
             <i className=" text-amber-950 underline hover:text-teal-700  ">
-              <Link to="/createflashcard"> Create New FlashCard</Link>
+              <Link to="/myflashcard"> Your FlashCard</Link>
             </i>
           </p>
         </div>

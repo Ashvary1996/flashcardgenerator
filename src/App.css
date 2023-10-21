@@ -1,13 +1,9 @@
-
-
 .App {
   text-align: center;
   margin: auto;
-  /* background-color: rgba(44, 223, 223, 0.511); */
 }
 
 body::-webkit-scrollbar {
-  /* background-color: transparent; */
   overflow: hidden;
   width: 0px;
 }
@@ -51,10 +47,7 @@ body::-webkit-scrollbar {
 
 /* ............................................. */
 
-.createGroupDiv {
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
-
+ 
 .error {
   color: red;
 }
@@ -77,17 +70,12 @@ label {
 
 /* .................................................  */
 
-.createTermCardDiv {
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
+ 
 
 /* ////////////////////////   2nd Page=> MyFlashCard //////////////////////////// */
-.childCards {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
+ 
 
-.childCards:hover>.del {
-  /* background-color: red; */
+.childCards:hover > .del {
   display: block;
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
@@ -108,7 +96,6 @@ label {
   font-weight: 500;
   width: 180px;
   transition: background-color 1s;
-
 }
 
 .shareBtns:focus {
@@ -144,10 +131,6 @@ label {
 /* CSS FOR RESPONSIVENESS STARTED */
 
 @media screen and (max-width: 800px) {
-  body {
-    /* background-color: lightgreen; */
-  }
-
   .midBox {
     display: flex;
     flex-direction: column;
@@ -158,6 +141,12 @@ label {
   .flashcardsDiv {
     width: 100%;
     height: fit-content;
+  }
+
+  .groupImage,
+  .selectImage {
+    width: fit-content;
+    margin-left: 0px;
   }
 
   .termDiv {
@@ -174,12 +163,9 @@ label {
     flex-direction: column;
     margin: auto;
     align-items: center;
-    /* border: 2px solid red; */
     overflow-y: auto;
     overflow-x: hidden;
   }
-
-
 
   .displayTermBox p {
     width: 100%;
@@ -191,11 +177,30 @@ label {
     height: 60%;
   }
 
+  .totalCards {
+    position: relative;
+    left: 10px;
+    text-align: center;
+    margin: auto;
+  }
+
+  .displayTermBox,
+  p {
+    height: 300px;
+  }
+
+  .modalDiv {
+    display: flex;
+    padding: 0px;
+    position: absolute;
+    top: 40%;
+    height: 500px;
+  }
+
   .shareBtns {
     padding-right: 10px;
     font-weight: 500;
     width: fit-content;
-    /* border: 2px solid red; */
     margin: auto;
     font-size: x-small;
   }
@@ -204,14 +209,5 @@ label {
     display: flex;
     flex-direction: row;
     width: 100%;
-
   }
 }
-
-
-
-
-
-
-
-

@@ -41,12 +41,12 @@ function App() {
               <Route path="/" element={<CreateFlashCard />}>
                 Default Page
               </Route>
-              <Route path="*" element={<CreateFlashCard />}>
+              {/* <Route path="*" element={<CreateFlashCard />}>
                 Default Page
-              </Route>
-              {/* <Route path="*" element={<NoPageFound />}>
-                Page Not Found
               </Route> */}
+              <Route path="*" element={<NoPageFound />}>
+                Page Not Found
+              </Route>
               {/* need ti fix this  */}
             </Routes>
           </Router>

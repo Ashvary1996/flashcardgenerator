@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Field, Formik, FieldArray, ErrorMessage } from "formik";
 import validationSchema from "../components/ValidatioSchema";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { addFlashCard } from "../redux/flashcardSlice";
 import { MdOutlineUploadFile } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -13,8 +13,6 @@ function CreateFlashCard() {
   const imageType = ["image/jpeg", "image/jpg", "image/png"];
   const dispatch = useDispatch();
   const formData = useSelector((state) => state.flashcard.formData); // Access form data from Redux store
-
-  
 
   const addMoreTermS = (values, moreTerm) => {
     moreTerm.insert(values.term.length + 1, {
@@ -39,7 +37,6 @@ function CreateFlashCard() {
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
           dispatch(addFlashCard(values));
-          //console.log("FlashCard Created Successfully", flashCardData);
           toast.success("FlashCard Created Successfully", {
             theme: "colored",
             position: toast.POSITION.TOP_CENTER,
@@ -51,7 +48,7 @@ function CreateFlashCard() {
         {({ values, handleChange, handleBlur, setFieldValue }) => (
           <Form>
             <div
-              className="bg-white w-[100%] h-[30%] p-[15px] flex flex-col text-left pl-[25px] rounded"
+              className="bg-white w-[100%] h-[30%] p-[15px] flex flex-col text-left pl-[25px] commonBorder"
               name="createGroupDiv"
             >
               <div className="flex flex-col md:flex-row ">
@@ -87,8 +84,8 @@ function CreateFlashCard() {
                   ) : (
                     <label
                       htmlFor="groupImage"
-                      className="order w-40 h-[3px] cursor-pointer px-2  mx-3 my-3 mt-[24px] p-4  border border-gray-400 flex  items-center justify-center rounded text-sm "
-                    >
+                      className="groupImage order w-40 h-[3px] cursor-pointer px-2  ml-5 my-3 mt-[24px] p-4  border border-gray-400 flex  items-center justify-center rounded text-sm  "
+                     >
                       <MdOutlineUploadFile className=" text-[2em] text-blue-700" />
                       <span className="font-bold text-blue-700 ">
                         Upload Image
@@ -115,9 +112,9 @@ function CreateFlashCard() {
                         toast.warning("Please Upload in Image Format !", {
                           pauseOnFocusLoss: false,
                         });
-                      } else if (event.target.files[0].size > 204800) {
+                      } else if (event.target.files[0].size > 304800) {
                         toast.warning(
-                          "Image size is very Large ! Please Select Image size less than 200kb",
+                          "Image size is very Large ! Please Select Image size less than 300kb",
                           {
                             pauseOnFocusLoss: false,
                           }
@@ -152,7 +149,7 @@ function CreateFlashCard() {
 
             {/* Term Div */}
             <div
-              className=" w-[100%] mt-3 pt-1 bg-white rounded flex flex-col text-left pl-[25px] "
+              className=" w-[100%] mt-3 pt-1 bg-white commonBorder flex flex-col text-left pl-[25px] "
               name="createTermCardDiv"
             >
               <FieldArray
@@ -228,7 +225,7 @@ function CreateFlashCard() {
                             ) : (
                               <label
                                 htmlFor={`term.${index}.termImage`}
-                                className="w-44 h-[44px] cursor-pointer px-3 mx-3 mt-7 py-1  flex  items-center justify-center rounded"
+                                className=" selectImage w-44 h-[44px] cursor-pointer px-3 ml-3  mt-7 py-1  flex  items-center justify-center rounded"
                               >
                                 <span className="flex w-32 p-2 mx-auto  font-bold text-blue-700 transition-all ease-in-out border border-blue-700 rounded-lg shadow-md hover:-translate-y-px hover:bg-blue-700 hover:text-white ">
                                   Select Image
@@ -260,10 +257,10 @@ function CreateFlashCard() {
                                     }
                                   );
                                 } else if (
-                                  event.target.files[0].size > 204800
+                                  event.target.files[0].size > 304800
                                 ) {
                                   toast.warning(
-                                    "Image size is very Large ! Please Select Image size less than 200kb",
+                                    "Image size is very Large ! Please Select Image size less than 300kb",
                                     {
                                       pauseOnFocusLoss: false,
                                     }

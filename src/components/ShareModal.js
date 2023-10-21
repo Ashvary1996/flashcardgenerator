@@ -2,7 +2,7 @@ import React from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import { BsShare } from "react-icons/bs";
-function Modal(props) {
+function ShareModal(props) {
   return (
     <div>
       <ToastContainer />
@@ -158,4 +158,4 @@ function Modal(props) {
   );
 }
 
-export default Modal;
+export default ShareModal;
