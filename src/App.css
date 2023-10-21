@@ -47,7 +47,6 @@ body::-webkit-scrollbar {
 
 /* ............................................. */
 
- 
 .error {
   color: red;
 }
@@ -70,21 +69,18 @@ label {
 
 /* .................................................  */
 
- 
-
 /* ////////////////////////   2nd Page=> MyFlashCard //////////////////////////// */
- 
 
 .childCards:hover > .del {
   display: block;
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
 
-/* /////////////       3rd Page => FlashCardDetails Page /////////////// */
 .commonBorder {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 5px;
 }
+/* /////////////       3rd Page => FlashCardDetails Page /////////////// */
 
 .shareBtns {
   display: flex;

@@ -12,6 +12,7 @@ import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import flashcardReducer from "./redux/flashcardSlice"; // Import your slice
 import FlashCardDetails from "./pages/FlashCardDetails";
+import SelectedFlashcard from "./components/SelectedFlashcard";
 
 const store = configureStore({
   reducer: {
@@ -41,13 +42,9 @@ function App() {
               <Route path="/" element={<CreateFlashCard />}>
                 Default Page
               </Route>
-              {/* <Route path="*" element={<CreateFlashCard />}>
-                Default Page
-              </Route> */}
               <Route path="*" element={<NoPageFound />}>
                 Page Not Found
               </Route>
-              {/* need ti fix this  */}
             </Routes>
           </Router>
         </Provider>

@@ -56,7 +56,7 @@ function MyFlashCard() {
                 <div
                   key={index}
                   name="childCards"
-                  className="commonBorder flex flex-col m-auto bg-white w-[300px] h-[200px] p-[8px] rounded mt-[50px] relative mb-[10px] "
+                  className="commonBorder childCards  flex flex-col m-auto bg-white w-[300px] h-[200px] p-[8px] rounded mt-[50px] relative mb-[10px] "
                 >
                   <button
                     className="del absolute text-gray-500 -right-3 -top-5 hidden  text-3xl hover:text-4xl hover:text-red-600 "

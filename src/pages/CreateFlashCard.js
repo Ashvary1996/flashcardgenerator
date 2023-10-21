@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Field, Formik, FieldArray, ErrorMessage } from "formik";
-import validationSchema from "../components/ValidatioSchema";
+import validationSchema from "../validation/ValidatioSchema";
+import validateImage from "../validation/ValidateImage";
 import { useSelector, useDispatch } from "react-redux";
 import { addFlashCard } from "../redux/flashcardSlice";
 import { MdOutlineUploadFile } from "react-icons/md";
@@ -10,10 +11,8 @@ import { GiCrossMark } from "react-icons/gi";
 import { ToastContainer, toast } from "react-toastify";
 
 function CreateFlashCard() {
-  const imageType = ["image/jpeg", "image/jpg", "image/png"];
   const dispatch = useDispatch();
   const formData = useSelector((state) => state.flashcard.formData); // Access form data from Redux store
-
   const addMoreTermS = (values, moreTerm) => {
     moreTerm.insert(values.term.length + 1, {
       termName: "",
@@ -85,7 +84,7 @@ function CreateFlashCard() {
                     <label
                       htmlFor="groupImage"
                       className="groupImage order w-40 h-[3px] cursor-pointer px-2  ml-5 my-3 mt-[24px] p-4  border border-gray-400 flex  items-center justify-center rounded text-sm  "
-                     >
+                    >
                       <MdOutlineUploadFile className=" text-[2em] text-blue-700" />
                       <span className="font-bold text-blue-700 ">
                         Upload Image
@@ -107,7 +106,7 @@ function CreateFlashCard() {
                       // Validation on image
                       if (
                         event.target.files[0] &&
-                        !imageType.includes(event.target.files[0].type)
+                        !validateImage.includes(event.target.files[0].type)
                       ) {
                         toast.warning("Please Upload in Image Format !", {
                           pauseOnFocusLoss: false,
@@ -246,7 +245,7 @@ function CreateFlashCard() {
 
                                 if (
                                   event.target.files[0] &&
-                                  !imageType.includes(
+                                  !validateImage.includes(
                                     event.target.files[0].type
                                   )
                                 ) {

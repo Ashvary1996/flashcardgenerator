@@ -39,3 +39,218 @@
     ) : null}
     
 </div>
+
+
+.App {
+  text-align: center;
+  margin: auto;
+}
+
+body::-webkit-scrollbar {
+  overflow: hidden;
+  width: 0px;
+}
+
+.ddes::-webkit-scrollbar {
+  background-color: transparent;
+  width: 5px;
+}
+
+.ddes::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 0, 0, 0.772);
+  border-radius: 20px;
+}
+
+/* .noFlashcard{
+  background-image: url("./assets/noFLashcard.jpeg");
+  width: 100%;
+  height: 100vh;
+  background-size: auto;  
+  background-repeat: no-repeat;
+  border: 2px solid red;
+} */
+/* ............................................ */
+
+.navlinks {
+  padding-bottom: 8px;
+}
+
+.navlinks:hover {
+  color: red;
+  border-bottom: 3px solid red;
+  padding-bottom: 2px;
+  border-radius: 0.5px;
+  transition: color 1s;
+}
+
+.navlinks:active {
+  color: red;
+  transition: none;
+}
+
+/* ............................................. */
+
+.error {
+  color: red;
+}
+
+input,
+textarea {
+  border: 1px solid grey;
+  border-radius: 4px;
+  padding: 3px;
+  padding-left: 10px;
+}
+
+label {
+  color: rgb(129, 125, 125);
+  font-weight: bold;
+  text-align: left;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+/* .................................................  */
+
+/* ////////////////////////   2nd Page=> MyFlashCard //////////////////////////// */
+
+.childCards {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: red;
+} 
+.childCards:hover > .del {
+  display: block;
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
+.commonBorder {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 5px;
+}
+/* /////////////       3rd Page => FlashCardDetails Page /////////////// */
+
+.shareBtns {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  padding: 5px;
+  margin-bottom: 20px;
+  color: rgb(93, 92, 92);
+  font-weight: 500;
+  width: 180px;
+  transition: background-color 1s;
+}
+
+.shareBtns:focus {
+  background-color: rgb(172, 23, 23);
+  color: white;
+  transition: none;
+}
+
+.shareBtns:hover {
+  background-color: gray;
+  color: white;
+}
+
+.shareIcons {
+  font-size: larger;
+  margin: 0px 10px;
+}
+
+/* ..................................................................... */
+.modalDiv {
+  z-index: 9;
+  background: #363736be;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 100;
+}
+
+/* ..................................................................... */
+
+/* CSS FOR RESPONSIVENESS STARTED */
+
+@media screen and (max-width: 800px) {
+  .midBox {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+  }
+
+  .flashcardsDiv {
+    width: 100%;
+    height: fit-content;
+  }
+
+  .groupImage,
+  .selectImage {
+    width: fit-content;
+    margin-left: 0px;
+  }
+
+  .termDiv {
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .displayTermBox {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .displayTermBox p {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .dImg {
+    width: 100%;
+    height: 60%;
+  }
+
+  .totalCards {
+    position: relative;
+    left: 10px;
+    text-align: center;
+    margin: auto;
+  }
+
+  .displayTermBox,
+  p {
+    height: 300px;
+  }
+
+  .modalDiv {
+    display: flex;
+    padding: 0px;
+    position: absolute;
+    top: 40%;
+    height: 500px;
+  }
+
+  .shareBtns {
+    padding-right: 10px;
+    font-weight: 500;
+    width: fit-content;
+    margin: auto;
+    font-size: x-small;
+  }
+
+  .shareBtnsDiv {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+}
