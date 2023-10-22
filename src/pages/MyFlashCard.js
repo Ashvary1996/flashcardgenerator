@@ -1,4 +1,4 @@
-// this is a MyFlashcard page for rendering the data of users and creating the cards. myflashcard page shows the number of cards created by the users and user can delete cards as well as see the details of cards on the click of view card  button
+// this is a MyFlashcard page for rendering the data of users and creating the cards. 
 
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";

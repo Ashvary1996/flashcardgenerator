@@ -39,7 +39,7 @@ function App() {
               <Route path="/flashCardDetails" element={<FlashCardDetails />}>
                 FlashCardDetails Page
               </Route>
-              <Route path="/" element={<CreateFlashCard />}>
+              <Route path="*" element={<CreateFlashCard />}>
                 Default Page
               </Route>
               <Route path="*" element={<NoPageFound />}>

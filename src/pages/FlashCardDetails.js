@@ -1,9 +1,12 @@
+// This is my flashcard details page where all description of flashcard are given
+
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import SelectedFlashcard from "../components/SelectedFlashcard";
 import noFLashcard from "../assets/noFLashcard.jpeg";
 
 function FlashCardDetails() {
+  // It access the current location object
   const location = useLocation();
   const flashcardData = location.state;
   return (
