@@ -8,7 +8,6 @@ import "react-toastify/dist/ReactToastify.css";
 import DeleteModal from "../components/DeleteModal";
 
 function MyFlashCard() {
-  
   // This is a MyFlashcard page for rendering the data of users and creating the cards.
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -56,8 +55,8 @@ function MyFlashCard() {
         >
           {flashCardData.length !== 0 ? (
             flashCardData
-              .slice(0, showCard)
               .reverse()
+              .slice(0, showCard)
               .map((elem, index) => (
                 <div
                   key={index}
@@ -82,10 +81,10 @@ function MyFlashCard() {
                   <h2 className="h-10 mt-1 text-gray-700">
                     {elem.groupDescription.length > 60
                       ? elem.groupDescription.slice(0, 60) + "..."
-                      : elem.groupDescription}{" "}
+                      : elem.groupDescription}
                   </h2>
                   <h2 className="mt-8 font-bold text-gray-500">
-                    {elem.term.length} Cards{" "}
+                    {elem.term.length} Cards
                   </h2>
                   {/* This is view card component */}
                   <button
