@@ -1,7 +1,6 @@
 import React from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
- 
 
 function DeleteModal(props) {
   const {
@@ -13,8 +12,8 @@ function DeleteModal(props) {
 
   return (
     <>
-      
-      {/* This is Delete Modal it will appeare at the time of Deleting Flashcard  */}
+      {/* This is Delete Modal it will appear at the time of Deleting Flashcard ,
+      we have taken this component from Tailwind and modified to our need*/}
       {showDeleteModal ? (
         <div
           className="min-w-screen h-screen animated fadeIn faster fixed left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover"
@@ -31,21 +30,22 @@ function DeleteModal(props) {
                 </p>
               </div>
               <div className="p-3 mt-2 text-center space-x-4 md:block">
+                {/* //Button for Closing the modal */}
                 <button
                   onClick={() => {
-                    // Close the modal
                     setShowDeleteModal(false);
                   }}
                   className="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"
                 >
                   Cancel
                 </button>
+                {/* // onClick button function for Deleting the flashcard */}
                 <button
                   onClick={() => {
-                    // Delete the flashcard
                     const newData = flashCardData.filter(
                       (elem) => elem !== props.delClickedItem
                     );
+                    // Setting and Saving new data after delete.
                     setFlashCardData(newData);
                     localStorage.setItem("flashcards", JSON.stringify(newData));
                     toast.error(

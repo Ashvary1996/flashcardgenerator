@@ -1,5 +1,8 @@
 import * as Yup from "yup";
 
+// This is a Validation Schema for Formik which is used to validate data inside the form field.
+// We are also using Yup for giving extra validation.
+
 const validationSchema = Yup.object({
   groupName: Yup.string()
     .min(3, "Group name must be min 3 character.")
@@ -9,7 +12,6 @@ const validationSchema = Yup.object({
     .min(20, "Description should be min 20 characters")
     .max(300, "Description allowed only upto 400 characters")
     .required("Required!"),
-  // groupImage: Yup.string().required("Image Required!"),
 
   term: Yup.array(
     Yup.object({
@@ -21,7 +23,6 @@ const validationSchema = Yup.object({
         .min(3, "Defination should be min 3 characters")
         .max(400, "Defination conatin only upto 400 characters")
         .required("Required!"),
-      // termImage: Yup.string().required("Image Required!"),
     })
   ),
 });

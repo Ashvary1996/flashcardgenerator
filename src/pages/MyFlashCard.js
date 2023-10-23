@@ -1,5 +1,3 @@
-// this is a MyFlashcard page for rendering the data of users and creating the cards. 
-
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import pokeball from "../assets/pokeball.png";
@@ -10,6 +8,9 @@ import "react-toastify/dist/ReactToastify.css";
 import DeleteModal from "../components/DeleteModal";
 
 function MyFlashCard() {
+  
+  // This is a MyFlashcard page for rendering the data of users and creating the cards.
+
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [flashCardData, setFlashCardData] = useState(
     localStorage.getItem("flashcards")
@@ -19,15 +20,15 @@ function MyFlashCard() {
 
   const [delClickedItem, setDelClickedItem] = useState(null);
 
-  // import useNavigate for navigate the page 
+  // import useNavigate for navigate the page
   const navigate = useNavigate();
-  // created a useState for manage  (show more ) button 
+  // created a useState for manage  (show more ) button
   const [showCard, setShowCard] = useState(6);
   const handleViewCardsClick = (elem) => {
     navigate("/flashCardDetails", { state: elem });
   };
 
-// for deleting a flashcard if you dont want extra data
+  // for deleting a flashcard if you dont want extra data
   const deleteFlashCard = (delClickedItem) => {
     setDelClickedItem(delClickedItem);
     setShowDeleteModal(true);

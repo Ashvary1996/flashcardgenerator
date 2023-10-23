@@ -1,5 +1,3 @@
-// this is a create flashcard page for creating new flashcards and rendering data to the my flashcard page as we create a flashcard.
-
 import React from "react";
 import { Form, Field, Formik, FieldArray, ErrorMessage } from "formik";
 import validationSchema from "../validation/ValidatioSchema";
@@ -12,11 +10,13 @@ import { BiEdit } from "react-icons/bi";
 import { GiCrossMark } from "react-icons/gi";
 import { ToastContainer, toast } from "react-toastify";
 
+// This is a CreateFlashcard page for creating new flashcards and rendering data to the my flashcard page as we create a flashcard.
+
 function CreateFlashCard() {
   const dispatch = useDispatch();
 
   // Access form data from Redux store
-  const formData = useSelector((state) => state.flashcard.formData); 
+  const formData = useSelector((state) => state.flashcard.formData);
   const addMoreTermS = (values, moreTerm) => {
     moreTerm.insert(values.term.length + 1, {
       termName: "",
@@ -34,6 +34,7 @@ function CreateFlashCard() {
       className="w-[78%] m-auto mt-2 flex flex-col md:mt-10 "
       name="createFlashcardDiv"
     >
+      {/* ToastContainer for alerting things while creating and */}
       <ToastContainer />
       <Formik
         initialValues={formData} // Use formData from Redux store
@@ -54,7 +55,7 @@ function CreateFlashCard() {
               className="bg-white w-[100%] h-[30%] p-[15px] flex flex-col text-left pl-[25px] commonBorder"
               name="createGroupDiv"
             >
-               {/* It's a input field for create a group name */}
+              {/* It's a input field for create a group name */}
               <div className="flex flex-col md:flex-row ">
                 <div className="flex flex-col">
                   <label htmlFor="groupName"> Create Group*</label>
@@ -66,7 +67,7 @@ function CreateFlashCard() {
                     className="w-full md:w-96"
                   ></Field>
 
-                   {/* Its a component to show error message for validation */}
+                  {/* Its a component to show error message for validation */}
                   <ErrorMessage name="groupName">
                     {(emsg) => <div className="error ">{emsg}</div>}
                   </ErrorMessage>
@@ -81,13 +82,12 @@ function CreateFlashCard() {
                         alt=""
                       />
 
-                     {/* its an image upload button */}
+                      {/* its an image upload button */}
                       <GiCrossMark
                         name="groupImgDelIcon"
                         className="mt-[10px] -ml-[20px] text-gray-400 hover:text-red-600 hover:text-xl hover:cursor-pointer "
                         onClick={() => setFieldValue("groupImage", null)} //selecting same image
-                      /> 
-
+                      />
                     </div>
                   ) : (
                     <label
@@ -100,9 +100,7 @@ function CreateFlashCard() {
                       </span>
                     </label>
                   )}
-                  <ErrorMessage name="groupImage">
-                    {(emsg) => <div className="error ">{emsg}</div>}
-                  </ErrorMessage>
+                  
                   {/* Its an input field for Image upload */}
                   <input
                     className="hidden "
@@ -140,7 +138,6 @@ function CreateFlashCard() {
                 </div>
               </div>
               <div className="flex flex-col" name="groupDescriptionDiv">
-                
                 {/* Its an input field for Group Description */}
                 <label htmlFor="groupDescription"> Add description</label>
                 <Field
@@ -150,7 +147,7 @@ function CreateFlashCard() {
                   placeholder="description "
                   className="w-full md:w-[70%] h-28 resize-none scrollbar-hide"
                 ></Field>
-                 {/* Its a component to show error message for validation */}
+                {/* Its a component to show error message for validation */}
                 <ErrorMessage name="groupDescription">
                   {(emsg) => <div className="error ">{emsg}</div>}
                 </ErrorMessage>
@@ -177,8 +174,7 @@ function CreateFlashCard() {
                             {index + 1}
                           </div>
                           <div className="flex flex-col">
-                            
-                              {/*Its an input component for Termcard Name */}
+                            {/*Its an input component for Termcard Name */}
                             <label htmlFor={`term.${index}.termName`}>
                               Enter Term*
                             </label>
@@ -192,13 +188,13 @@ function CreateFlashCard() {
                               type="text"
                               placeholder="Term Name"
                             ></Field>
-                                {/* Its a component to show error message for validation */}
+                            {/* Its a component to show error message for validation */}
                             <ErrorMessage name={`term.${index}.termName`}>
                               {(emsg) => <div className="error ">{emsg}</div>}
                             </ErrorMessage>
                           </div>
-                              
-                              {/* It's an input component for term card definition */}
+
+                          {/* It's an input component for term card definition */}
                           <div className="flex flex-col">
                             <label htmlFor={`term.${index}.termDefinition`}>
                               Enter Definition*
@@ -230,7 +226,7 @@ function CreateFlashCard() {
                                   alt=""
                                 />
                                 <GiCrossMark
-                                  className="mr-5 text-lg hover:text-red-600 "
+                                  className="mr-5 text-lg hover:text-red-600 cursor-pointer"
                                   onClick={() =>
                                     setFieldValue(`term.${index}.termImage`, "")
                                   }
@@ -242,15 +238,11 @@ function CreateFlashCard() {
                                 className=" selectImage w-44 h-[44px] cursor-pointer px-3 ml-3  mt-7 py-1  flex  items-center justify-center rounded"
                               >
                                 <span className="flex w-32 p-2 mx-auto font-bold text-blue-700 transition-all ease-in-out border border-blue-700 rounded-lg shadow-md hover:-translate-y-px hover:bg-blue-700 hover:text-white ">
-                                  Select Image
+                                  Select Image 
                                 </span>
                               </label>
                             )}
-                            <ErrorMessage
-                              className="text-red-600"
-                              component="span"
-                              name={`term.${index}.termImage`}
-                            />
+                            
                             {/* Input field for image upload */}
                             <input
                               onClick={(event) => (event.target.value = null)} //selecting same image
@@ -321,7 +313,7 @@ function CreateFlashCard() {
                         </div>
                       ))}
 
-                      {/* It's an Add More button for adding a new term */}
+                    {/* It's an Add More button for adding a new term */}
                     <div
                       className="inline-block mt-4 mb-6 font-bold text-blue-700 cursor-pointer mx-7"
                       onClick={() => addMoreTermS(values, moreTerm)}
@@ -332,7 +324,7 @@ function CreateFlashCard() {
                 )}
               ></FieldArray>
             </div>
-            
+
             {/* Its an Create button for Creating a flashcard */}
             <div className="relative pt-20">
               <button

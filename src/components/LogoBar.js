@@ -1,5 +1,5 @@
 // Added Logo of Almabetter
-import React, { useState } from "react";
+import React from "react";
 import logo from "../assets/logo.png";
 
 function LogoBar() {

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
+    // This is Navbar which help us to routes between different pages without refreshing.
     <div className="m-auto mt-[5px] w-[80%] mb-1  p-[10px]  ">
       <div className="m-auto text-center  relative">
         <h1 className="text-lg font-bold text-left ">Create Flashcard</h1>

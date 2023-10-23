@@ -6,9 +6,9 @@ function ShareModal(props) {
   return (
     <div>
       <ToastContainer />
-      {/* This is Share Modal it will Come up when user click on Share button from flashcard details */}
+      {/* This is Share Modal we have taken it from Tailwind component and customized it according to our website need ,This component  will come up when user click on Share button from flashcard details page*/}
       {props.showModal ? (
-        <div className="min-h-screen bg-gray-800 flex items-center justify-center modalDiv">
+        <div  className="min-h-screen bg-gray-800 flex items-center justify-center modalDiv">
           <div className="bg-white w-full mx-4 p-4 rounded-xl md:w-1/2 lg:w-1/3">
             <div className="flex justify-between items center border-b border-gray-200 py-3">
               <div className="flex items-center justify-center">
