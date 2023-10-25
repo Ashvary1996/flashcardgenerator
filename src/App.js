@@ -6,18 +6,14 @@ import CreateFlashCard from "./pages/CreateFlashCard";
 import MyFlashCard from "./pages/MyFlashCard";
 import NoPageFound from "./components/NoPageFound";
 import "react-toastify/dist/ReactToastify.css";
+import store from "./redux/store";
 
 // Import Redux related dependencies
 import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
-import flashcardReducer from "./redux/flashcardSlice"; // Import your slice
+ // Import your slice
 import FlashCardDetails from "./pages/FlashCardDetails";
 
-export const store = configureStore({ 
-  reducer: {
-    flashcard: flashcardReducer,
-  },
-});
+
 
 function App() {
   return (
