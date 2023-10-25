@@ -11,7 +11,6 @@ body::-webkit-scrollbar {
 .descScroll::-webkit-scrollbar {
   background-color: transparent;
   width: 5px;
-  
 }
 
 .descScroll::-webkit-scrollbar-thumb {
@@ -111,6 +110,7 @@ label {
   top: 0;
   left: 0;
   opacity: 100;
+  z-index: 50;
 }
 
 /* ..................................................................... */
@@ -177,11 +177,18 @@ label {
   }
 
   .modalDiv {
-    display: flex;
-    padding: 0px;
-    position: absolute;
-    top: 40%;
-    height: 500px;
+    /* border: 2px solid red; */
+    background: #363736be;
+    opacity: 100;
+    z-index: 50;
+    /* height: 200%; */
+  }
+  .modalDiv > div {
+    /* border: 2px solid red; */
+    /* background: #363736be; */
+    /* opacity: 100; */
+    /* z-index: 50; */
+    /* max-height: max-content; */
   }
 
   .shareBtns {
@@ -196,5 +203,41 @@ label {
     display: flex;
     flex-direction: row;
     width: 100%;
+  }
+  .inField{
+    width: 80%;
+  }
+
+ 
+
+}
+@media only screen and (max-width: 640px) and (min-width: 200px) {
+
+
+
+
+  .modalDiv {
+    background: #363736be;
+    opacity: 100;
+    z-index: 50;
+    height: 100vh;
+  }
+  .modalDiv > div {
+    opacity: 100;
+    z-index: 50;
+    width: 80%;
+  }
+  .share {
+    height: 20px;
+  }
+  .link {
+    height: 50px;
+  }
+  .lname {
+    height: 25px;
+    font-size: 18px;
+  }
+  .inField{
+    width: 80%;
   }
 }

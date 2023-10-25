@@ -8,23 +8,23 @@ function ShareModal(props) {
       <ToastContainer />
       {/* This is Share Modal we have taken it from Tailwind component and customized it according to our website need ,This component  will come up when user click on Share button from flashcard details page*/}
       {props.showModal ? (
-        <div  className="min-h-screen bg-gray-800 flex items-center justify-center modalDiv">
-          <div className="bg-white w-full mx-4 p-4 rounded-xl md:w-1/2 lg:w-1/3">
-            <div className="flex justify-between items center border-b border-gray-200 py-3">
+        <div className="min-w-screen h-screen bg-gray-800 flex items-center justify-center modalDiv sm:w-1/3">
+          <div className="bg-white w-full mx-4 p-4 rounded-xl sm:w-1/2   ">
+            <div className="flex justify-between items center border-b border-gray-200 py-3 sm:py-1  sm:h-20">
               <div className="flex items-center justify-center">
-                <p className="text-xl font-bold text-gray-800">Share</p>
+                <p className=" share text-xl font-bold text-gray-800 sm:h-20 ">Share</p>
               </div>
               <div
-                className="bg-gray-300 text-lg hover:bg-red-600 cursor-pointer hover:text-white font-sans text-gray-500 w-8 h-8 flex items-center justify-center rounded-full"
+                className="bg-gray-300 text-lg hover:bg-red-600 cursor-pointer hover:text-white font-sans text-gray-500 w-8 h-8 flex items-center justify-center rounded-full "
                 onClick={() => props.setShowModal(false)}
               >
                 x
               </div>
             </div>
 
-            <div className="my-4">
-              <div className="border-2 border-gray-200 flex justify-between items-center mt-4 py-2 px-4 ">
-                <p className="text-sm mr-2">Link: </p>
+            <div className="my-4 sm:my-1">
+              <div className="border-2 border-gray-200 flex justify-between items-center mt-4 py-2 px-4 sm:px-0 sm:py-0 sm:h-10  link">
+                <p className="text-sm mr-2  lname  sm:h-fit">Link: </p>
                 <input
                   className="copylink pr-2 w-full outline-none bg-transparent"
                   type="text"

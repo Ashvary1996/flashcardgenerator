@@ -150,7 +150,7 @@ function CreateFlashCard() {
                   name="groupDescription"
                   id="groupDescription"
                   placeholder="description "
-                  className="w-full md:w-[70%] h-28 resize-none scrollbar-hide"
+                  className="w-full md:w-[70%]  h-28 resize-none scrollbar-hide"
                 ></Field>
                 {/* Its a component to show error message for validation */}
                 <ErrorMessage name="groupDescription">
@@ -184,7 +184,7 @@ function CreateFlashCard() {
                               Enter Term*
                             </label>
                             <Field
-                              className="p-2 text-sm text-gray-900 border border-gray-400 rounded-md w-50 md:w-72 bg-gray-50"
+                              className="p-2 text-sm text-gray-900 border border-gray-400 rounded-md w-50 md:w-72 inField bg-gray-50"
                               name={`term.${index}.termName`}
                               id={`term.${index}.termName`}
                               value={term.termName}
@@ -206,7 +206,7 @@ function CreateFlashCard() {
                             </label>
                             <Field
                               as="textarea"
-                              className="w-full h-10 p-2 text-sm text-gray-700 transition-all duration-500 border border-gray-400 rounded-md resize-none focus:h-24 md:w-72 bg-gray-50 "
+                              className="w-full h-10 p-2 text-sm text-gray-700 transition-all duration-500  inField border border-gray-400 rounded-md resize-none focus:h-24 md:w-72 bg-gray-50 "
                               name={`term.${index}.termDefinition`}
                               id={`term.${index}.termDefinition`}
                               value={term.termDefinition}
