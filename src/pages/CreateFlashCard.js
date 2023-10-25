@@ -28,7 +28,17 @@ function CreateFlashCard() {
       pauseOnFocusLoss: false,
     });
   };
+   const submitForm=(values)=>{
 
+    dispatch(addFlashCard(values));
+    toast.success("FlashCard Created Successfully", {
+      theme: "colored",
+      position: toast.POSITION.TOP_CENTER,
+      pauseOnFocusLoss: false,
+    });
+    
+
+  };
   return (
     <div
       className="w-[78%] m-auto mt-2 flex flex-col md:mt-10 "
@@ -40,13 +50,8 @@ function CreateFlashCard() {
         initialValues={formData} // Use formData from Redux store
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
-          dispatch(addFlashCard(values));
-          toast.success("FlashCard Created Successfully", {
-            theme: "colored",
-            position: toast.POSITION.TOP_CENTER,
-            pauseOnFocusLoss: false,
-          });
-          resetForm({ values: "" });
+         submitForm(values)
+         resetForm({ values: "" });
         }}
       >
         {({ values, handleChange, handleBlur, setFieldValue }) => (

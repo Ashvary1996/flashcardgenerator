@@ -13,7 +13,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import flashcardReducer from "./redux/flashcardSlice"; // Import your slice
 import FlashCardDetails from "./pages/FlashCardDetails";
 
-const store = configureStore({ 
+export const store = configureStore({ 
   reducer: {
     flashcard: flashcardReducer,
   },
