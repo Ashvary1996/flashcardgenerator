@@ -44,17 +44,17 @@ This Project Consists of 3 main pages:
 
     ![Alt Screenshot](</screenshots/screenshot(7).png>)
 
-## `TECHNOLOGIES USED`
+### `TECHNOLOGIES USED`
 
 This project was constructed utilizing a variety of frontend technologies, including the `React` `JavaScript` library for the core structure, `Tailwind CSS` to craft a responsive user interface, `Redux` for efficient state management, `React-icons`, `Formik`, `React-Router-Dom`,`jspdf`,`yup` and `react-testing-library/jest` for testing purposes.
 
-## `Deploy Link`
+### `Deploy Link`
 
 ```bash
    https://flashcardgenerator4.netlify.app/
 ```
 
-## `PROJECT CLONING AND RUNNING`
+### `PROJECT CLONING AND RUNNING`
 
 Clone the project
 
@@ -80,7 +80,7 @@ Run Your Project
   npm run start
 ```
 
-## `COLLABORATORS`
+#### `COLLABORATORS`
 
 It was crafted within a team comprised of four members.
 
