@@ -28,7 +28,7 @@ const flashcardSlice = createSlice({
     },
     addFlashCard: (state, action) => {
       // Add the new flashcard to the flashcards array
-      state.flashcards.push(action.payload);
+      state.flashcards.unshift(action.payload);
 
       // Set flashcards in local storage
       localStorage.setItem("flashcards", JSON.stringify(state.flashcards));

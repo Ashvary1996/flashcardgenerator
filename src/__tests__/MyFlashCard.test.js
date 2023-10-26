@@ -1,15 +1,15 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import MyFlashCard from '../pages/MyFlashCard';
-import { MemoryRouter } from 'react-router-dom';
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import MyFlashCard from "../pages/MyFlashCard";
+import { MemoryRouter } from "react-router-dom";
 
 // Mock the react-toastify component
-jest.mock('react-toastify', () => ({
+jest.mock("react-toastify", () => ({
   ToastContainer: () => null,
 }));
 
 // Mock the DeleteModal component
-jest.mock('../components/DeleteModal', () => 'DeleteModal');
+jest.mock("../components/DeleteModal", () => "DeleteModal");
 
 // Mock localStorage for testing
 const localStorageMock = {
@@ -19,76 +19,76 @@ const localStorageMock = {
 };
 global.localStorage = localStorageMock;
 
-describe('MyFlashCard', () => {
-  it('renders the component', () => {
-    render( <MemoryRouter>
+describe("MyFlashCard", () => {
+  it("renders the component", () => {
+    render(
+      <MemoryRouter>
         <MyFlashCard />
-      </MemoryRouter>);
-    const createFlashcardLink = screen.getByText('Create New FlashCard');
+      </MemoryRouter>
+    );
+    const createFlashcardLink = screen.getByText("Create New FlashCard");
     expect(createFlashcardLink).toBeInTheDocument();
   });
 
-//   it('displays flashcard data', () => {
-//     // Mock flashCardData
-//     const mockFlashCardData = [
-//       {
-//         groupName: 'Test Group 1',
-//         groupDescription: 'Test Description 1',
-//         term: [{termName: "term1", termDefinition: "my name is sudhir", termImage: ""}],
-//       }
-      
-//     ];
-    
-//     localStorageMock.getItem.mockReturnValue(JSON.stringify(mockFlashCardData));
+  //   it('displays flashcard data', () => {
+  //     // Mock flashCardData
+  //     const mockFlashCardData = [
+  //       {
+  //         groupName: 'Test Group 1',
+  //         groupDescription: 'Test Description 1',
+  //         term: [{termName: "term1", termDefinition: "my name is sudhir", termImage: ""}],
+  //       }
 
-//     render( <MemoryRouter>
-//         <MyFlashCard />
-//       </MemoryRouter>);
+  //     ];
 
-    
+  //     localStorageMock.getItem.mockReturnValue(JSON.stringify(mockFlashCardData));
 
-//     const groupNames = screen.queryAllByText("Test Group 1");
-//     expect(groupNames).toHaveLength(1);
-//   });
+  //     render( <MemoryRouter>
+  //         <MyFlashCard />
+  //       </MemoryRouter>);
 
-//   it('handles "See all" and "See less" buttons', () => {
-//     // Mock flashCardData
-//     const mockFlashCardData = [
-//       {
-//         groupName: 'Test Group 1',
-//         groupDescription: 'Test Description 1',
-//         term: [],
-//       },
-//       {
-//         groupName: 'Test Group 2',
-//         groupDescription: 'Test Description 2',
-//         term: [],
-//       },
-//     ];
+  //     const groupNames = screen.queryAllByText("Test Group 1");
+  //     expect(groupNames).toHaveLength(1);
+  //   });
 
-//     localStorageMock.getItem.mockReturnValue(JSON.stringify(mockFlashCardData));
+  //   it('handles "See all" and "See less" buttons', () => {
+  //     // Mock flashCardData
+  //     const mockFlashCardData = [
+  //       {
+  //         groupName: 'Test Group 1',
+  //         groupDescription: 'Test Description 1',
+  //         term: [],
+  //       },
+  //       {
+  //         groupName: 'Test Group 2',
+  //         groupDescription: 'Test Description 2',
+  //         term: [],
+  //       },
+  //     ];
 
-//     render(<MyFlashCard />);
+  //     localStorageMock.getItem.mockReturnValue(JSON.stringify(mockFlashCardData));
 
-//     const seeAllButton = screen.getByText('See all');
-//     const seeLessButton = screen.getByText('See less');
+  //     render(<MyFlashCard />);
 
-//     // Initially, the "See all" button should be displayed
-//     expect(seeAllButton).toBeInTheDocument();
-//     expect(seeLessButton).not.toBeInTheDocument();
+  //     const seeAllButton = screen.getByText('See all');
+  //     const seeLessButton = screen.getByText('See less');
 
-//     fireEvent.click(seeAllButton);
+  //     // Initially, the "See all" button should be displayed
+  //     expect(seeAllButton).toBeInTheDocument();
+  //     expect(seeLessButton).not.toBeInTheDocument();
 
-//     // After clicking "See all," the "See less" button should be displayed
-//     expect(seeAllButton).not.toBeInTheDocument();
-//     expect(seeLessButton).toBeInTheDocument();
+  //     fireEvent.click(seeAllButton);
 
-//     fireEvent.click(seeLessButton);
+  //     // After clicking "See all," the "See less" button should be displayed
+  //     expect(seeAllButton).not.toBeInTheDocument();
+  //     expect(seeLessButton).toBeInTheDocument();
 
-//     // After clicking "See less," the "See all" button should be displayed again
-//     expect(seeAllButton).toBeInTheDocument();
-//     expect(seeLessButton).not.toBeInTheDocument();
-//   });
+  //     fireEvent.click(seeLessButton);
+
+  //     // After clicking "See less," the "See all" button should be displayed again
+  //     expect(seeAllButton).toBeInTheDocument();
+  //     expect(seeLessButton).not.toBeInTheDocument();
+  //   });
 
   // You can write more test cases as needed
 });

@@ -28,16 +28,13 @@ function CreateFlashCard() {
       pauseOnFocusLoss: false,
     });
   };
-   const submitForm=(values)=>{
-
+  const submitForm = (values) => {
     dispatch(addFlashCard(values));
     toast.success("FlashCard Created Successfully", {
       theme: "colored",
       position: toast.POSITION.TOP_CENTER,
       pauseOnFocusLoss: false,
     });
-    
-
   };
   return (
     <div
@@ -50,8 +47,8 @@ function CreateFlashCard() {
         initialValues={formData} // Use formData from Redux store
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
-         submitForm(values)
-         resetForm({ values: "" });
+          submitForm(values);
+          //  resetForm({ values: "" });
         }}
       >
         {({ values, handleChange, handleBlur, setFieldValue }) => (
@@ -105,7 +102,7 @@ function CreateFlashCard() {
                       </span>
                     </label>
                   )}
-                  
+
                   {/* Its an input field for Image upload */}
                   <input
                     className="hidden "
@@ -149,7 +146,7 @@ function CreateFlashCard() {
                   as="textarea"
                   name="groupDescription"
                   id="groupDescription"
-                  placeholder="description "
+                  placeholder="Group Gescription "
                   className="w-full md:w-[70%]  h-28 resize-none scrollbar-hide"
                 ></Field>
                 {/* Its a component to show error message for validation */}
@@ -243,11 +240,11 @@ function CreateFlashCard() {
                                 className=" selectImage w-44 h-[44px] cursor-pointer px-3 ml-3  mt-7 py-1  flex  items-center justify-center rounded"
                               >
                                 <span className="flex w-32 p-2 mx-auto font-bold text-blue-700 transition-all ease-in-out border border-blue-700 rounded-lg shadow-md hover:-translate-y-px hover:bg-blue-700 hover:text-white ">
-                                  Select Image 
+                                  Select Image
                                 </span>
                               </label>
                             )}
-                            
+
                             {/* Input field for image upload */}
                             <input
                               onClick={(event) => (event.target.value = null)} //selecting same image

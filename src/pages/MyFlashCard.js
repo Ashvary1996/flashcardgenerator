@@ -47,54 +47,51 @@ function MyFlashCard() {
         <div className="absolute pr-10 overflow-visible text-sm font-bold text-right text-gray-500 totalCards right-24">
           {!flashCardData.length
             ? null
-            : `Total FlashCards :${flashCardData.length}`}
+            : `Total FlashCards : ${flashCardData.length}`}
         </div>
         <div
           name="displayFlashcardDiv"
           className="flex flex-wrap m-auto overflow-hidden "
         >
           {flashCardData.length !== 0 ? (
-            flashCardData
-              .reverse()
-              .slice(0, showCard)
-              .map((elem, index) => (
-                <div
-                  key={index}
-                  name="childCards"
-                  className="commonBorder childCards  flex flex-col m-auto bg-white w-[300px] h-[200px] p-[8px] rounded mt-[50px] relative mb-[10px] "
+            flashCardData.slice(0, showCard).map((elem, index) => (
+              <div
+                key={index}
+                name="childCards"
+                className="commonBorder childCards  flex flex-col m-auto bg-white w-[300px] h-[200px] p-[8px] rounded mt-[50px] relative mb-[10px] "
+              >
+                <button
+                  className="absolute hidden text-3xl text-gray-500 del -right-3 -top-5 hover:text-4xl hover:text-red-600 "
+                  onClick={() => {
+                    deleteFlashCard(elem, index);
+                  }}
                 >
-                  <button
-                    className="absolute hidden text-3xl text-gray-500 del -right-3 -top-5 hover:text-4xl hover:text-red-600 "
-                    onClick={() => {
-                      deleteFlashCard(elem, index);
-                    }}
-                  >
-                    <GiCrossMark />
-                  </button>
-                  {/* This is an image component*/}
-                  <img
-                    className="border-2 bg-slate-400  w-[70px] h-[70px] m-auto rounded-full absolute -top-12 left-[39.3%] mb-10"
-                    src={elem.groupImage ? elem.groupImage : pokeball}
-                    alt=""
-                  />
-                  <h1 className="mt-4 font-bold ">{elem.groupName}</h1>
-                  <h2 className="h-10 mt-1 text-gray-700">
-                    {elem.groupDescription.length > 60
-                      ? elem.groupDescription.slice(0, 60) + "..."
-                      : elem.groupDescription}
-                  </h2>
-                  <h2 className="mt-8 font-bold text-gray-500">
-                    {elem.term.length} Cards
-                  </h2>
-                  {/* This is view card component */}
-                  <button
-                    className="w-40 h-8 m-auto font-medium text-red-600 duration-300 border-2 border-red-500 rounded hover:bg-red-500 hover:text-white"
-                    onClick={() => handleViewCardsClick(elem)}
-                  >
-                    View Cards
-                  </button>
-                </div>
-              ))
+                  <GiCrossMark />
+                </button>
+                {/* This is an image component*/}
+                <img
+                  className="border-2 bg-slate-400  w-[70px] h-[70px] m-auto rounded-full absolute -top-12 left-[39.3%] mb-10"
+                  src={elem.groupImage ? elem.groupImage : pokeball}
+                  alt=""
+                />
+                <h1 className="mt-4 font-bold ">{elem.groupName}</h1>
+                <h2 className="h-10 mt-1 text-gray-700">
+                  {elem.groupDescription.length > 60
+                    ? elem.groupDescription.slice(0, 60) + "..."
+                    : elem.groupDescription}
+                </h2>
+                <h2 className="mt-8 font-bold text-gray-500">
+                  {elem.term.length} Cards
+                </h2>
+                {/* This is view card component */}
+                <button
+                  className="w-40 h-8 m-auto font-medium text-red-600 duration-300 border-2 border-red-500 rounded hover:bg-red-500 hover:text-white"
+                  onClick={() => handleViewCardsClick(elem)}
+                >
+                  View Cards
+                </button>
+              </div>
+            ))
           ) : (
             <div className=" w-[100%] h-[80vh] rounded noFlashcard overflow-hidden relative font-bold">
               <img

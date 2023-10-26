@@ -10,7 +10,7 @@ const validationSchema = Yup.object({
     .required("Required!"),
   groupDescription: Yup.string()
     .min(20, "Description should be min 20 characters")
-    .max(300, "Description allowed only upto 400 characters")
+    .max(300, "Description allowed only upto 300 characters")
     .required("Required!"),
 
   term: Yup.array(
@@ -20,8 +20,8 @@ const validationSchema = Yup.object({
         .max(20, "Term name must be within 20 characters")
         .required("Required!"),
       termDefinition: Yup.string()
-        .min(3, "Defination should be min 3 characters")
-        .max(400, "Defination conatin only upto 400 characters")
+        .min(20, "Defination should be min 20 characters")
+        .max(500, "Defination conatin only upto 500 characters")
         .required("Required!"),
     })
   ),

@@ -183,13 +183,6 @@ label {
     z-index: 50;
     /* height: 200%; */
   }
-  .modalDiv > div {
-    /* border: 2px solid red; */
-    /* background: #363736be; */
-    /* opacity: 100; */
-    /* z-index: 50; */
-    /* max-height: max-content; */
-  }
 
   .shareBtns {
     padding-right: 10px;
@@ -204,18 +197,12 @@ label {
     flex-direction: row;
     width: 100%;
   }
-  .inField{
+  .inField {
     width: 80%;
   }
-
- 
-
 }
+
 @media only screen and (max-width: 640px) and (min-width: 200px) {
-
-
-
-
   .modalDiv {
     background: #363736be;
     opacity: 100;
@@ -237,7 +224,7 @@ label {
     height: 25px;
     font-size: 18px;
   }
-  .inField{
+  .inField {
     width: 80%;
   }
 }
