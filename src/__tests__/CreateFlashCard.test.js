@@ -6,7 +6,7 @@ import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
 
 // Mock Redux store setup
-const mockStore = configureStore([]);
+const mockStore = configureStore([]); // Create a mock Redux store
 const initialState = {
   flashcard: {
     formData: {
@@ -24,12 +24,12 @@ const initialState = {
     flashcards: [],
   },
 };
-const store = mockStore(initialState);
+const store = mockStore(initialState); // Initialize the mock store with initial state
 
 test("Render input fields", () => {
   render(
-    <Provider store={store}>
-      <CreateFlashCard />
+    <Provider store={store}> {/* Provide the mock Redux store to the component */}
+      <CreateFlashCard /> {/* Render the CreateFlashCard component */}
     </Provider>
   );
 
