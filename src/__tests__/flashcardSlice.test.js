@@ -1,7 +1,10 @@
-import flashcardReducer, { addFlashCard, updateFormData } from '../redux/flashcardSlice';
-
-describe('flashcardSlice reducer', () => {
-  it('should return the initial state', () => {
+import flashcardReducer, {
+  addFlashCard,
+  updateFormData,
+} from "../redux/flashcardSlice";
+// FlashcardSlice reducer Test
+describe("flashcardSlice reducer", () => {
+  it("should return the initial state", () => {
     const initialState = {
       formData: {
         groupName: "",
@@ -19,8 +22,8 @@ describe('flashcardSlice reducer', () => {
     };
     expect(flashcardReducer(undefined, {})).toEqual(initialState);
   });
-
-  it('should handle addFlashCard', () => {
+  
+  it("should handle addFlashCard", () => {
     const initialState = {
       formData: {
         groupName: "",
@@ -38,14 +41,14 @@ describe('flashcardSlice reducer', () => {
     };
 
     const newFlashcard = {
-      groupName: 'Math Terms',
-      groupImage: 'math.jpg',
-      groupDescription: 'Description of Math Terms',
+      groupName: "Math Terms",
+      groupImage: "math.jpg",
+      groupDescription: "Description of Math Terms",
       term: [
         {
-          termName: 'Addition',
-          termDefinition: 'The process of adding two or more numbers.',
-          termImage: 'addition.jpg',
+          termName: "Addition",
+          termDefinition: "The process of adding two or more numbers.",
+          termImage: "addition.jpg",
         },
       ],
     };
@@ -56,7 +59,7 @@ describe('flashcardSlice reducer', () => {
     expect(nextState.flashcards).toEqual([newFlashcard]);
   });
 
-  it('should handle updateFormData', () => {
+  it("should handle updateFormData", () => {
     const initialState = {
       formData: {
         groupName: "",
@@ -74,14 +77,14 @@ describe('flashcardSlice reducer', () => {
     };
 
     const updatedData = {
-      groupName: 'Updated Group',
-      groupImage: 'updated-image.jpg',
+      groupName: "Updated Group",
+      groupImage: "updated-image.jpg",
     };
 
     const action = updateFormData(updatedData);
     const nextState = flashcardReducer(initialState, action);
 
-    expect(nextState.formData.groupName).toEqual('Updated Group');
-    expect(nextState.formData.groupImage).toEqual('updated-image.jpg');
+    expect(nextState.formData.groupName).toEqual("Updated Group");
+    expect(nextState.formData.groupImage).toEqual("updated-image.jpg");
   });
 });
