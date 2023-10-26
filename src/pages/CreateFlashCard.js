@@ -48,7 +48,7 @@ function CreateFlashCard() {
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
           submitForm(values);
-          //  resetForm({ values: "" });
+           resetForm({ values: "" });
         }}
       >
         {({ values, handleChange, handleBlur, setFieldValue }) => (
@@ -146,7 +146,7 @@ function CreateFlashCard() {
                   as="textarea"
                   name="groupDescription"
                   id="groupDescription"
-                  placeholder="Group Gescription "
+                  placeholder="Group Description... "
                   className="w-full md:w-[70%]  h-28 resize-none scrollbar-hide"
                 ></Field>
                 {/* Its a component to show error message for validation */}
@@ -210,7 +210,7 @@ function CreateFlashCard() {
                               onChange={handleChange}
                               onBlur={handleBlur}
                               type="text"
-                              placeholder="Term Definition"
+                              placeholder="Term Definition..."
                             ></Field>
                             {/* Its a component to show error message for validation */}
                             <ErrorMessage name={`term.${index}.termDefinition`}>
