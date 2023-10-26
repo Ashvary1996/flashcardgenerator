@@ -50,9 +50,9 @@ This project was constructed utilizing a variety of frontend technologies, inclu
 
 ### `Deploy Link`
 
-```bash
+
    https://flashcardgenerator4.netlify.app/
-```
+
 
 ### `PROJECT CLONING AND RUNNING`
 

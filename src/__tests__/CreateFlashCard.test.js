@@ -33,13 +33,13 @@ test("Render input fields", () => {
     </Provider>
   );
 
-  // Example: Test if the "Create Group*" input field is rendered
+  //  Test if the "Create Group*" input field is rendered
   const groupNameInput = screen.getByLabelText("Create Group*");
   expect(groupNameInput).toBeInTheDocument();
 
-  // Example: Test if the "Add description" input field is rendered
+  //  Test if the "Add description" input field is rendered
   const descriptionInput = screen.getByLabelText("Add description");
   expect(descriptionInput).toBeInTheDocument();
 
-  // You can continue adding more tests for other input fields and components as needed.
+  // for  adding more tests for other input fields and components as needed.
 });
