@@ -41,14 +41,13 @@ function CreateFlashCard() {
       className="w-[78%] m-auto mt-2 flex flex-col md:mt-10 "
       name="createFlashcardDiv"
     >
-      {/* ToastContainer for alerting things while creating and */}
       <ToastContainer />
       <Formik
         initialValues={formData} // Use formData from Redux store
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
           submitForm(values);
-          //  resetForm({ values: "" });
+          resetForm({values: ""});
         }}
       >
         {({ values, handleChange, handleBlur, setFieldValue }) => (
@@ -146,7 +145,7 @@ function CreateFlashCard() {
                   as="textarea"
                   name="groupDescription"
                   id="groupDescription"
-                  placeholder="Group Gescription "
+                  placeholder="Group Description "
                   className="w-full md:w-[70%]  h-28 resize-none scrollbar-hide"
                 ></Field>
                 {/* Its a component to show error message for validation */}
@@ -203,7 +202,7 @@ function CreateFlashCard() {
                             </label>
                             <Field
                               as="textarea"
-                              className="w-full h-10 p-2 text-sm text-gray-700 transition-all duration-500  inField border border-gray-400 rounded-md resize-none focus:h-24 md:w-72 bg-gray-50 "
+                              className="w-full h-10 p-2 text-sm text-gray-700 transition-all duration-500 border border-gray-400 rounded-md resize-none inField focus:h-24 md:w-72 bg-gray-50 "
                               name={`term.${index}.termDefinition`}
                               id={`term.${index}.termDefinition`}
                               value={term.termDefinition}
@@ -228,7 +227,7 @@ function CreateFlashCard() {
                                   alt=""
                                 />
                                 <GiCrossMark
-                                  className="mr-5 text-lg hover:text-red-600 cursor-pointer"
+                                  className="mr-5 text-lg cursor-pointer hover:text-red-600"
                                   onClick={() =>
                                     setFieldValue(`term.${index}.termImage`, "")
                                   }
